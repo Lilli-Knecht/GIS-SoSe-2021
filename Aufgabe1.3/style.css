@@ -1,0 +1,95 @@
+body{
+    width: 800px;
+    margin:auto;
+    background-image: url("Dateien/bg.png");
+    font-family: Arial, Helvetica, sans-serif;
+    color:dimgray;
+}
+
+nav{
+    background-color:tan;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+h1{
+    color:oldlace;
+    background-color:tomato;
+    font-size:7em;
+}
+
+a{
+    color:oldlace;
+    text-decoration: none;
+    
+}
+
+#aktuell{
+    color:orangered;
+}
+
+blockquote{
+    color:oldlace;
+    background-color:sandybrown;
+    padding: 30px;
+    border-radius: 60%;
+}
+
+h3{
+    color:tomato;
+    font-size: 2em;
+}
+
+footer{
+    color:oldlace;
+    background-color:tan;
+    padding: 20px;
+}
+
+table{
+    color:oldlace;
+    background-color: tomato;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td{
+    border: 1px solid orangered;
+}
+th{
+    background-color: orangered;
+    padding: 10px;
+}
+
+td{
+    padding: 5px;
+}
+
+ul{
+    list-style-type: circle;
+}
+
+#mail{
+    color:oldlace;
+    background-color: tomato;
+    padding: 2px;
+}
+
+em{
+    color:orangered;
+}
+
+button{
+    color:oldlace;
+    background-color: orangered;
+}
+
+.headline{
+    font-size: 1.5em;
+}
+
+.mehrfach{
+    color:orangered;
+}
+
