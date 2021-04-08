@@ -13,6 +13,11 @@ nav{
     right: 0;
 }
 
+.navigation:hover{
+    background-color: orangered;
+    font-weight: bolder;
+}
+
 h1{
     color:oldlace;
     background-color:tomato;
@@ -55,7 +60,7 @@ table{
 }
 
 table, th, td{
-    border: 1px solid orangered;
+    border: 1px solid tan;
 }
 th{
     background-color: orangered;
@@ -85,11 +90,52 @@ button{
     background-color: orangered;
 }
 
-.headline{
+.subheadline{
     font-size: 1.5em;
 }
 
 .mehrfach{
     color:orangered;
 }
+
+img{
+    margin-bottom: 100px;
+}
+
+video{
+    margin: 10px;
+}
+
+#jumpin{
+    color: orangered;
+    font-style:italic;
+}
+
+.Kontakt, #nachricht{
+    color:white;
+    background-color: lightslategray;
+    opacity: 30%;
+    padding: 5px;
+    border: 5px solid;
+    display: block;
+}
+
+#nachricht{
+    width: 300px;
+    padding-bottom: 20px;
+}
+
+#zusatz{
+    font-size: x-small;
+}
+
+.Kontakt::placeholder, #nachricht::placeholder{
+    color:white;
+}
+
+
+
+
+
+
 

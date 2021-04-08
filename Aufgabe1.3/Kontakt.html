@@ -12,16 +12,16 @@
         <h1>Kontakt</h1>
         <h3>Navigation zu den Seiten:</h3>
         <nav>
-            <a href="Portfolio.html">Startseite</a>
-            <a href="Steckbrief.html">Steckbrief</a>
-            <a id="aktuell" href="Kontakt.html">Kontakt</a>
+            <a class="navigation" href="Portfolio.html">Startseite</a>
+            <a class="navigation" href="Steckbrief.html">Steckbrief</a>
+            <a class="navigation" id="aktuell" href="Kontakt.html">Kontakt</a>
         </nav>
 
     </header>
     <main>
-        <p class="headline">So können sie mich per <em>Mail</em> kontaktieren: <a id="mail" href="mailto:lilliknecht@web.de">Lilli Knecht</a></p>
+        <p class="subheadline">So können sie mich per <em>Mail</em> kontaktieren: <a id="mail" href="mailto:lilliknecht@web.de">Lilli Knecht</a></p>
         
-        <p class="headline">Das sind meine <em>Social-Media</em> Accounts:</p>
+        <p class="subheadline">Das sind meine <em>Social-Media</em> Accounts:</p>
         <img src="Dateien/Media.png" alt="Social Media Logos">
         
         <ul>
@@ -30,9 +30,20 @@
         </ul>
         
         <i>Hier könnten jetzt noch weitere Daten stehen, wenn ich wüsste, was ich hier noch so reinbringen könnte.</i>
-        <p class="headline">
+        <p>
             Hier noch ein Button, der nichts bewirkt: <button>Klickbutton</button>
         </p>
+
+        <h3>Kontakt</h3>
+        <form>
+            <input class="Kontakt" type="text" name="vorname" placeholder="Vorname">
+            <input class="Kontakt" type="text" name="nachname" placeholder="Nachname">
+            <input class="Kontakt" type="email" name="email" placeholder="E-Mail">
+            <input id="nachricht" type="textarea" name="nachricht" placeholder="Nachricht">
+            <p id="zusatz">Mit Absenden der Nachricht bestätigen ich den <em>Datenschutz</em></p>
+            <button type="button" class="Kontakt">absenden</button>
+        </form>
+
         
     </main>
     <footer>
