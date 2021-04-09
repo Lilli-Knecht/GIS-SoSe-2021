@@ -1,16 +1,18 @@
 body{
-    width: 800px;
+    position:relative;
+    width:800px;
     margin:auto;
     background-image: url("Dateien/bg.png");
     font-family: Arial, Helvetica, sans-serif;
     color:dimgray;
 }
 
-nav{
+#nav1{
     background-color:tan;
-    position: absolute;
+    position:fixed;
     top: 0;
-    right: 0;
+    margin-left: 600px;
+    padding: 5px;
 }
 
 .navigation:hover{
@@ -18,10 +20,34 @@ nav{
     font-weight: bolder;
 }
 
+#nav2{
+    background-color: transparent;
+    position: absolute;
+    top: 150px;
+    right: 300px;
+    margin:auto;
+}
+
+.icon:hover{
+    background-color:sandybrown;
+}
+
+#head{
+    background-color:tomato;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    margin:auto;
+    margin-bottom: -400px;
+    transform: translateY(-500px);
+}
+
 h1{
     color:oldlace;
-    background-color:tomato;
-    font-size:7em;
+    transform: translateY(500px);
+    font-size: 7rem;
+    width: min-content;
+    margin:auto;
 }
 
 a{
@@ -31,19 +57,24 @@ a{
 }
 
 #aktuell{
-    color:orangered;
+    color:black;
+    font-weight: bolder;
 }
 
 blockquote{
     color:oldlace;
     background-color:sandybrown;
+    width: 600px;
     padding: 30px;
-    border-radius: 60%;
+    border: 5px solid tomato;
+    margin: auto;
+    margin-bottom: 100px;
 }
 
-h3{
+h2{
     color:tomato;
-    font-size: 2em;
+    font-size: 2.5em;
+    margin-top: 50px;
 }
 
 footer{
@@ -72,7 +103,16 @@ td{
 }
 
 ul{
-    list-style-type: circle;
+    list-style-type: none;
+    width:50%;
+    padding: 5px;
+    border:2px solid orangered;
+    margin:auto;
+}
+
+li{
+    width:min-content;
+    margin:auto;
 }
 
 #mail{
@@ -95,18 +135,20 @@ button{
 }
 
 .mehrfach{
-    color:orangered;
+    color:oldlace;
+    background-color: orangered;
+    width:min-content;
 }
 
-img{
-    margin-bottom: 100px;
+.bild{
+    margin-bottom: 50px;
 }
 
 video{
     margin: 10px;
 }
 
-#jumpin{
+#jumpin, #zumAnfang{
     color: orangered;
     font-style:italic;
 }
@@ -132,6 +174,9 @@ video{
 .Kontakt::placeholder, #nachricht::placeholder{
     color:white;
 }
+
+
+
 
 
 

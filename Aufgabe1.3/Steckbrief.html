@@ -9,17 +9,30 @@
 </head>
 <body>
     <header>
-        <h1 id="start">Steckbrief: Lilli Knecht</h1> 
-        <h3>Navigation zu den Seiten:</h3>
-        <nav>
+        <div id="head">
+            <h1 id="start">Steckbrief</h1> 
+        </div>
+        <nav id="nav1">
             <a class="navigation" href="Portfolio.html">Startseite</a>
             <a class="navigation" id="aktuell" href="Steckbrief.html">Steckbrief</a>
             <a class="navigation" href="Kontakt.html">Kontakt</a>
         </nav>
 
+        <nav id="nav2">
+            <a href="http://www.facebook.com/lilli.knecht.3/">
+                <img class="icon" src="Dateien/facebook_icon1.png" alt="Facebook-Icon">
+            </a>
+            <a href="http://www.instagram.com/17_lilli_07/?hl=de">
+                <img class="icon" src="Dateien/instagram_icon1.png" alt="Instagram-Icon">
+            </a>
+            <a href="mailto:lilliknecht@web.de">
+                <img class="icon" src="Dateien/Email_icon1.png" alt="Email-Icon">
+            </a>
+        </nav>
+
     </header>
     <main>
-        <img src="Dateien/Lilli_K.jpeg" alt="Portrait von Lilli">
+        <img class="bild" src="Dateien/Lilli_K.jpeg" alt="Portrait von Lilli">
         <h2>Über mich:</h2>
         <p>Ich bin Lilli und bin 20 Jahre alt. Ich habe 4 Geschwister und 3 Katzen. Meine Hobbys sind tanzen und singen.</p>
         <h2>Mein Studium:</h2>
@@ -31,7 +44,7 @@
             Hier eine kleine Kostprobe: 
         </p>
         <video src="Dateien/Tanzvideo.mp4" controls></video>
-        <h3>Random Facts über mich:</h3>
+        <h2>Random Facts über mich:</h2>
         <p class="subheadline">Hier Facts zu meinen Ess- und Getränkevorlieben:</p>
         <table>
             <thead>
@@ -58,8 +71,8 @@
 
         </table>
 
-        <p class="headline">Orte/Länder, die ich schon besucht habe:</p>
-        <p class="mehrfach">Markiert: schonn mehrfach besucht</p>
+        <p class="subheadline">Orte/Länder, die ich schon besucht habe:</p>
+        <p>Markiert: schonn mehrfach besucht</p>
         <ul>
             <li class="mehrfach">Italien</li>
             <li class="mehrfach">Frankreich</li>
@@ -71,7 +84,7 @@
             <li>Österreich</li>
         </ul>
 
-        <p>zurück zum Anfang der Seite: <a href="#start">Steckbrief</a></p>
+        <p>zurück zum Anfang der Seite: <a id="zumAnfang" href="#start">Steckbrief</a></p>
     </main>
     <footer>
         <p>Das wars.</p>
