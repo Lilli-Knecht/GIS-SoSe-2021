@@ -1,0 +1,209 @@
+body{
+    position:relative;
+    width:800px;
+    margin:auto;
+    background-image: url("Dateien/bg.png");
+    font-family: Arial, Helvetica, sans-serif;
+    color:dimgray;
+}
+
+#nav1{
+    position: sticky;
+    top: 0;
+    padding: 5px;
+    z-index: 1;
+}
+
+#navcontent{
+    background-color:tan;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+}
+
+.navigation:hover{
+    background-color: orangered;
+    font-weight: bolder;
+}
+
+#nav2{
+    background-color: transparent;
+    position: absolute;
+    top: 150px;
+    right: 300px;
+    margin:auto;
+}
+
+a img:hover{
+    background-color:sandybrown;
+}
+
+#head{
+    background-color:tomato;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    margin:auto;
+    margin-bottom: -400px;
+    transform: translateY(-500px);
+    transition: color 1.0s ease-in-out 0.5s;
+}
+
+h1{
+    color:oldlace;
+    transform: translateY(500px);
+    font-size: 7rem;
+    width: min-content;
+    margin:auto;
+}
+
+a{
+    color:oldlace;
+    text-decoration: none;
+    
+}
+
+#aktuell{
+    color:black;
+    font-weight: bolder;
+}
+
+blockquote{
+    color:oldlace;
+    background-color:sandybrown;
+    width: 600px;
+    padding: 30px;
+    border: 5px solid tomato;
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+h2{
+    color:tomato;
+    font-size: 2.5em;
+    margin-top: 50px;
+}
+
+h2~p{
+    font-size:larger;
+}
+
+h3{
+    font-size: 1.5em;
+}
+
+footer{
+    color:oldlace;
+    background-color:tan;
+    padding: 20px;
+}
+
+table{
+    color:oldlace;
+    background-color: tomato;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table *{
+    border: 1px solid tan;
+}
+
+tr>th{
+    color:black;
+    background-color: orangered;
+    padding: 10px;
+}
+
+td{
+    padding: 5px;
+}
+
+h3+p{
+    color:orangered;
+}
+
+ul{
+    list-style-type: none;
+    width:50%;
+    padding: 5px;
+    border:2px solid orangered;
+    margin:auto;
+}
+
+li{
+    width:min-content;
+    margin:auto;
+}
+
+#mail{
+    color:oldlace;
+    background-color: tomato;
+    padding: 2px;
+}
+
+em{
+    color:orangered;
+}
+
+button{
+    color:oldlace;
+    background-color: orangered;
+}
+
+.mehrfach{
+    color:oldlace;
+    background-color: orangered;
+    width:min-content;
+}
+
+#uboot:hover{
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+@keyframes slidein{
+    from{
+        margin-left: 0%;
+    }
+    to{
+        margin-left: 50%;
+    }
+
+}
+
+video{
+    margin: 10px;
+}
+
+#jumpin, #zumAnfang{
+    color: orangered;
+    font-style:italic;
+}
+
+.Kontakt, #nachricht{
+    color:white;
+    background-color: lightslategray;
+    opacity: 30%;
+    padding: 5px;
+    border: 5px solid;
+    display: block;
+}
+
+#nachricht{
+    width: 300px;
+    padding-bottom: 20px;
+}
+
+#zusatz{
+    font-size: x-small;
+}
+
+.Kontakt::placeholder, #nachricht::placeholder{
+    color:white;
+}
+
+textarea{
+    font-family: Arial, Helvetica, sans-serif;
+}
