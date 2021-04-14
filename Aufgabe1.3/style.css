@@ -8,10 +8,17 @@ body{
 }
 
 #nav1{
-    background-color:tan;
-    position:fixed;
+    position: sticky;
     top: 0;
-    margin-left: 600px;
+    padding: 5px;
+    z-index: 1;
+}
+
+#navcontent{
+    background-color:tan;
+    position: absolute;
+    top: 0;
+    right: 0;
     padding: 5px;
 }
 
