@@ -51,11 +51,16 @@ a img:hover{
 }
 
 h1{
+    transition: color 3s ease-in-out 0s;
     color:oldlace;
     transform: translateY(500px);
     font-size: 7rem;
     width: min-content;
     margin:auto;
+}
+
+h1:hover{
+    color: black;
 }
 
 a{
@@ -207,3 +212,33 @@ video{
 textarea{
     font-family: Arial, Helvetica, sans-serif;
 }
+
+@media screen and (max-width: 1024px) {
+    body{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    body, img, video, blockquote, main{
+        width: 100%;
+    } 
+
+    video{
+        margin: 0;
+    }
+
+    div#head{
+        width: 100%;
+        height: min-content;
+        transform: translateY(0);
+        margin-bottom: 10px;
+        border-radius: 50%;
+    }
+
+    div#head h1{
+        font-size: 3rem;
+        transform: translateY(0);
+    }
+    
+}    
