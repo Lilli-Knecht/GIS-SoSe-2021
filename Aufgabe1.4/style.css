@@ -12,14 +12,19 @@ body{
     top: 0;
     padding: 5px;
     z-index: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+#Burgermenu{
+    display:none;
 }
 
 #navcontent{
     background-color:tan;
-    position: absolute;
-    top: 0;
-    right: 0;
     padding: 5px;
+    height: min-content;
 }
 
 .navigation:hover{
@@ -33,6 +38,7 @@ body{
     top: 150px;
     right: 300px;
     margin:auto;
+    display: flex;
 }
 
 a img:hover{
@@ -215,15 +221,61 @@ textarea{
 
 @media screen and (max-width: 1024px) {
     body{
-        width: 100%;
+        width: 80%;
     }
 }
 
 @media screen and (max-width: 599px) {
-    body, img, video, blockquote, main{
+    body{
         width: 100%;
-    } 
+    }
 
+    header{
+        margin-bottom: 20px;
+    }
+
+    #Burgermenu{
+        display: block;
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: fit-content;
+    }
+
+    #nav1{
+        display: flex;
+        flex-direction: row;
+        width:fit-content;
+    }
+
+    #navcontent{
+        flex-direction: column;
+        display: none;
+    }
+
+    #nav1:hover #navcontent{
+        display: inline-flex;
+
+    }
+
+    #nav2{
+        top: 0;
+        right: 0;
+        width: fit-content;   
+    }
+    
+    blockquote{
+        width: 80%;
+    }
+
+    img{
+        width: 100%;
+    }
+
+    img#uboot{
+        width: 40%;
+    }
+    
     video{
         margin: 0;
     }
