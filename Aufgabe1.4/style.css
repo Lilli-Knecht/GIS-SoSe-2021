@@ -57,7 +57,7 @@ a img:hover{
 }
 
 h1{
-    transition: color 3s ease-in-out 0s;
+    transition: color 2s ease-in-out 0s;
     color:oldlace;
     transform: translateY(500px);
     font-size: 7rem;
@@ -81,6 +81,7 @@ a{
 }
 
 blockquote{
+    transition: all 1s ease-in-out 0s;
     color:oldlace;
     background-color:sandybrown;
     width: 600px;
@@ -88,7 +89,16 @@ blockquote{
     border: 5px solid tomato;
     margin: auto;
     margin-bottom: 100px;
+
 }
+
+ blockquote:hover{
+    width: 450px;
+    padding: 50px;
+    border: 2px solid orangered;
+    border-radius: 30%;
+    background-color:tan;
+ }
 
 h2{
     color:tomato;
@@ -171,15 +181,15 @@ button{
 
 #uboot:hover{
     animation-duration: 3s;
-    animation-name: slidein;
+    animation-name: slideout;
 }
 
-@keyframes slidein{
+@keyframes slideout{
     from{
         margin-left: 0%;
     }
     to{
-        margin-left: 50%;
+        margin-left: 100%;
     }
 
 }
@@ -221,13 +231,52 @@ textarea{
 
 @media screen and (max-width: 1024px) {
     body{
-        width: 80%;
+        width: 600px;
+        margin: auto;
+    }
+
+    div#head{
+        width: 100%;
+        transform: translateY(-600px);
+        border-radius: 30%;
+        margin-bottom: -500px;
+    }
+
+    div#head h1{
+        font-size: 5rem;
+        transform:translateY(600px)
+    }
+
+    #nav2{
+        top: 150px;
+        right: 200px;
+    }
+
+    h2{
+        font-size: 2em;
+        margin-top: 30px;
+    }
+    
+    h2~p{
+        font-size:medium;
+    }
+    
+    h3{
+        font-size: 1em;
+    }
+
+    img, video{
+        width:100%;
+    }
+
+    blockquote{
+        width:80%;
     }
 }
 
 @media screen and (max-width: 599px) {
     body{
-        width: 100%;
+        width:100%;
     }
 
     header{
@@ -239,37 +288,36 @@ textarea{
         position: sticky;
         top: 0;
         left: 0;
-        width: fit-content;
+        width: 50px;
     }
 
     #nav1{
         display: flex;
         flex-direction: row;
         width:fit-content;
+        padding: 2px;
     }
 
     #navcontent{
         flex-direction: column;
         display: none;
+        font-size: smaller;
     }
 
     #nav1:hover #navcontent{
         display: inline-flex;
-
     }
 
     #nav2{
         top: 0;
         right: 0;
-        width: fit-content;   
-    }
-    
-    blockquote{
-        width: 80%;
+        width: fit-content;
+        display:flex;
     }
 
-    img{
-        width: 100%;
+    a img{
+        width: 70%;
+        
     }
 
     img#uboot{
@@ -291,6 +339,28 @@ textarea{
     div#head h1{
         font-size: 3rem;
         transform: translateY(0);
+    }
+    
+    blockquote{
+        width:250px;
+        margin-bottom: 20px;
+        padding: 10px;
+        font-size: smaller;
+    }
+
+    blockquote:hover{
+        width:200px;
+        padding: 15px;
+        border-radius: 20%;
+    }
+    
+    h2{
+        font-size: large;
+        margin-top: 20px;
+    }
+
+    audio{
+        width: 100%;
     }
     
 }    
