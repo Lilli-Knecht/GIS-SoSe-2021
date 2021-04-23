@@ -159,6 +159,103 @@ function leapyears(): void {
 }
 
 //Aufgabe 6 - Mehr Schleifen und Funktionen
+console.log("Aufgabe 6:");
+//a)
+console.log("a)");
+schleife();
+
+function schleife(): void {
+    let hashtag: string = "#" ;
+    for (let i: number = 0; i < 7; i++) {
+        console.log(hashtag);
+        hashtag = hashtag + "#";
+    }
+}
+
+//b)
+console.log("b)");
+fizzBuzz();
+
+function fizzBuzz(): void {
+    let zaehler: number = 1;
+    for (zaehler; zaehler < 101; zaehler++) {
+        if (zaehler % 3 == 0) {
+            console.log("Fizz");
+        }
+        else if (zaehler % 5 == 0) {
+            console.log("Buzz");
+        }
+        else {
+            console.log(zaehler);
+        }
+        
+    }
+}
+
+//c)
+console.log("c)");
+fizzBuzz2();
+
+function fizzBuzz2(): void {
+    let zaehler: number = 1;
+    for (zaehler; zaehler < 101; zaehler++) {
+        if (zaehler % 3 == 0 && zaehler % 5 == 0) {
+            console.log("FizzBuzz");
+        }
+        else if (zaehler % 3 == 0) {
+            console.log("Fizz");
+        }
+        else if (zaehler % 5 == 0) {
+            console.log("Buzz");
+        }
+        else {
+            console.log(zaehler);
+        }
+        
+    }
+}
+
+//d)
+console.log("d)");
+schachbrett();
+
+function schachbrett(): void {
+    let brett: string = "";
+    for (let zeilen: number = 1; zeilen < 9; zeilen++) {
+        for (let character: number = 1; character < 9; character++) {
+            if (zeilen % 2 !== 0 && character % 2 !== 0 || zeilen % 2 == 0 && character % 2 == 0) {
+                brett = brett + " ";
+            }
+            else {
+                brett = brett + "#";
+            }
+        }
+        brett = brett + "\n";
+    }
+    console.log(brett);
+}
+
+//e)
+console.log("e)");
+let groesse: number = 5;
+schachbrett2(groesse);
+
+function schachbrett2(gr: number): void {
+    let brett: string = "";
+    for (let zeilen: number = 1; zeilen < gr + 1 ; zeilen++) {
+        for (let character: number = 1; character < gr + 1 ; character++) {
+            if (zeilen % 2 !== 0 && character % 2 !== 0 || zeilen % 2 == 0 && character % 2 == 0) {
+                brett = brett + " ";
+            }
+            else {
+                brett = brett + "#";
+            }
+        }
+        brett = brett + "\n";
+    }
+    console.log(brett);
+}
+
 
 
 
