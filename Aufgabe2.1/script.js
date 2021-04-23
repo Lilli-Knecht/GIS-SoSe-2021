@@ -1,5 +1,6 @@
 "use strict";
 //Aufgabe 1 - Basics
+console.log("Aufgabe 1:");
 function a1() {
     let x = "Alles";
     console.log(x);
@@ -20,6 +21,7 @@ function func2() {
 b) debugger
 c) siehe oben im Code */
 //Aufgabe 2 - Kontinuierliche Variablenmanipulation
+console.log("Aufgabe 2:");
 function a2() {
     let i = 9;
     do {
@@ -35,6 +37,7 @@ a)Fehlermeldungen werden recht gut "erklärt". Benutzt man eine Varibale, die in
 Auch bei Doppelungen von Variablennamen wird die nicht genehmigte Doppelung angezeigt.
 */
 //Aufgabe 4 - Gobal vs Lokal (Namen der Funktionen wegen Doppelung geändert)
+console.log("Aufgabe 4:");
 let x = "Hallo";
 console.log(x);
 func3(x);
@@ -61,7 +64,9 @@ normale Variable vs. Funktionen: Variablen speichern den Typ und einen Wert. Fun
 Beide geben von sich aus nichts zurück, sondern speichern nur Werte, man muss die Anweisung einer Rückgabe definieren.
 */
 //Aufgabe 5 - Schleifen, Funktionen und andere Kontrollstrukturen
+console.log("Aufgabe 5:");
 //a)
+console.log("a)");
 let zahl1 = 2;
 let zahl2 = 5;
 multiply(zahl1, zahl2);
@@ -70,6 +75,7 @@ function multiply(a, b) {
     console.log(ergebnis);
 }
 //b)
+console.log("b)");
 max(zahl1, zahl2);
 function max(a, b) {
     if (a > b) {
@@ -80,6 +86,7 @@ function max(a, b) {
     }
 }
 //c)
+console.log("c)");
 multiply1to100();
 function multiply1to100() {
     let i = 1;
@@ -91,10 +98,12 @@ function multiply1to100() {
     console.log(result);
 }
 //d)
-//for (let i: number = 0; i < 10; i++) {
-//console.log(Math.random);
-//}
+console.log("d)");
+for (let i = 0; i < 10; i++) {
+    console.log(Math.floor(Math.random() * 100) + 1);
+}
 //e)
+console.log("e)");
 let zahl = 5;
 factorial(zahl);
 function factorial(n) {
@@ -111,6 +120,7 @@ function factorial(n) {
     console.log(fakultaet);
 }
 //f)
+console.log("f)");
 leapyears();
 function leapyears() {
     let jahr = 1900;
@@ -120,4 +130,5 @@ function leapyears() {
         }
     }
 }
+//Aufgabe 6 - Mehr Schleifen und Funktionen
 //# sourceMappingURL=script.js.map

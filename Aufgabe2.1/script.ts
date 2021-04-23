@@ -1,4 +1,5 @@
 //Aufgabe 1 - Basics
+console.log("Aufgabe 1:");
 function a1(): void {
     let x: string = "Alles";
     console.log(x);
@@ -25,6 +26,7 @@ b) debugger
 c) siehe oben im Code */
 
 //Aufgabe 2 - Kontinuierliche Variablenmanipulation
+console.log("Aufgabe 2:");
 function a2(): void {
     let i: number = 9;
 
@@ -45,6 +47,7 @@ Auch bei Doppelungen von Variablennamen wird die nicht genehmigte Doppelung ange
 */
 
 //Aufgabe 4 - Gobal vs Lokal (Namen der Funktionen wegen Doppelung geändert)
+console.log("Aufgabe 4:");
 let x: string = "Hallo";
 console.log(x);
 func3(x);
@@ -76,7 +79,9 @@ Beide geben von sich aus nichts zurück, sondern speichern nur Werte, man muss d
 */
 
 //Aufgabe 5 - Schleifen, Funktionen und andere Kontrollstrukturen
+console.log("Aufgabe 5:");
 //a)
+console.log("a)");
 let zahl1: number = 2;
 let zahl2: number = 5;
 multiply(zahl1, zahl2);
@@ -87,6 +92,7 @@ function multiply(a: number, b: number): void {
 }
 
 //b)
+console.log("b)");
 max(zahl1, zahl2);
 
 function max(a: number, b: number): void {
@@ -99,6 +105,7 @@ function max(a: number, b: number): void {
 }
 
 //c)
+console.log("c)");
 multiply1to100();
 
 function multiply1to100(): void {
@@ -113,11 +120,13 @@ function multiply1to100(): void {
 }
 
 //d)
-//for (let i: number = 0; i < 10; i++) {
-    //console.log(Math.random);
-//}
+console.log("d)");
+for (let i: number = 0; i < 10; i++) {
+    console.log(Math.floor(Math.random() * 100) + 1 );
+}
 
 //e)
+console.log("e)");
 let zahl: number = 5;
 factorial(zahl);
 
@@ -136,6 +145,7 @@ function factorial(n: number): void {
 }
 
 //f)
+console.log("f)");
 leapyears();
 
 function leapyears(): void {
@@ -147,6 +157,8 @@ function leapyears(): void {
     
     }
 }
+
+//Aufgabe 6 - Mehr Schleifen und Funktionen
 
 
 
