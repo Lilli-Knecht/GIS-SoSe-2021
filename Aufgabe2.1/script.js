@@ -57,8 +57,8 @@ function func5() {
     x = "Test";
 }
 /*a) Ausgabe: Hallo Bla Hallo Blubb Test
-b) Unterschied lokal und global: lokale Varibalen "leben" nur innerhalb der geschweiften Klammern/einer Funktion und können globale Varibalen überschreiben.
-globale Variablen liegen eine Ebene über den lokalen Variablen.
+b) Unterschied lokal und global: lokale Variablen "leben" nur innerhalb der geschweiften Klammern/einer Funktion und können globale Varibalen überschreiben.
+globale Variablen liegen eine Ebene über den lokalen Variablen. Auf globale Variablen kann von überall zugegriffen werden, eine lokale Variable ist nur innerhalb der Funktion (o.Ä.) zugreifbar.
 Übergabeparameter: Sind Varibalen, die man Funktionen übergeben kann, mit denen sie dann arbeiten und diese auch verändern kann.
 normale Variable vs. Funktionen: Variablen speichern den Typ und einen Wert. Funktionen können mehrere VAriablen enthalten und mit diesen arbeiten.
 Beide geben von sich aus nichts zurück, sondern speichern nur Werte, man muss die Anweisung einer Rückgabe definieren.
