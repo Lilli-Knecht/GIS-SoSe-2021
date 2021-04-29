@@ -125,6 +125,8 @@ var Aufgabe2_2;
     let contextBoden = canvas.getContext("2d");
     let contextHimmel = canvas.getContext("2d");
     let contextHause = canvas.getContext("2d");
+    let contextBaum = canvas.getContext("2d");
+    let contextWolke = canvas.getContext("2d");
     contextBoden.fillStyle = "green";
     contextBoden.fillRect(10, 300, 400, 50);
     contextHimmel.fillStyle = "blue";
@@ -133,16 +135,89 @@ var Aufgabe2_2;
     contextHause.strokeRect(50, 220, 150, 100);
     contextHause.fillStyle = "white";
     contextHause.fillRect(50, 220, 150, 100);
+    contextHause.beginPath();
+    contextHause.moveTo(20, 220);
+    contextHause.lineTo(125, 120);
+    contextHause.lineTo(230, 220);
+    contextHause.lineTo(20, 220);
+    contextHause.fill();
+    contextHause.stroke();
     contextHause.fillStyle = "black";
     contextHause.fillRect(100, 260, 40, 60);
+    contextBaum.fillStyle = "brown";
+    contextBaum.fillRect(300, 250, 20, 80);
+    contextBaum.fillStyle = "green";
+    contextBaum.beginPath();
+    contextBaum.ellipse(290, 230, 30, 30, Math.PI / 4, 0, 2 * Math.PI);
+    contextBaum.fill();
+    contextBaum.beginPath();
+    contextBaum.ellipse(330, 240, 30, 30, Math.PI / 4, 0, 2 * Math.PI);
+    contextBaum.fill();
+    contextBaum.beginPath();
+    contextBaum.ellipse(310, 200, 30, 30, Math.PI / 4, 0, 2 * Math.PI);
+    contextBaum.fill();
+    contextWolke.fillStyle = "white";
+    contextWolke.beginPath();
+    contextWolke.ellipse(250, 120, 20, 30, Math.PI / 4, 0, 2 * Math.PI);
+    contextWolke.fill();
     //b)
-    console.log("b)");
+    console.log("b) siehe Seite");
+    class Rechteck {
+        constructor(_x, _y, _breite, _hoehe) {
+            this.canvas2 = document.getElementById("Canvas_3.b)");
+            this.contextRechteck = this.canvas2.getContext("2d");
+            this.xKoordinate = _x;
+            this.yKoordinate = _y;
+            this.breite = _breite;
+            this.hoehe = _hoehe;
+        }
+        show() {
+            this.contextRechteck.strokeRect(this.xKoordinate, this.yKoordinate, this.breite, this.hoehe);
+        }
+    }
+    let rechteck1 = new Rechteck(300, 250, 100, 40);
+    let rechteck2 = new Rechteck(200, 50, 40, 100);
+    rechteck1.show();
+    rechteck2.show();
     //c)
-    console.log("c)");
+    console.log("c) siehe Seite");
+    class Rechteck2 {
+        constructor() {
+            this.canvas3 = document.getElementById("Canvas_3.c,d)");
+            this.contextRechteck = this.canvas3.getContext("2d");
+            this.xKoordinate = Math.random() * (400 - 0);
+            this.yKoordinate = Math.random() * (400 - 0);
+            this.breite = Math.random() * (400 - 0);
+            this.hoehe = Math.random() * (400 - 0);
+        }
+        drawRect() {
+            this.contextRechteck.fillRect(this.xKoordinate, this.yKoordinate, this.breite, this.hoehe);
+        }
+    }
+    let rechteckzufall = new Rechteck2();
+    rechteckzufall.drawRect();
     //d)
-    console.log("d)");
+    console.log("d) siehe c)");
     //e)
-    console.log("e)");
+    console.log("e) siehe Seite");
+    class Rechteck3 {
+        constructor() {
+            this.canvas4 = document.getElementById("Canvas_3.e)");
+            this.contextRechteck = this.canvas4.getContext("2d");
+            this.xKoordinate = Math.random() * (400 - 0);
+            this.yKoordinate = Math.random() * (400 - 0);
+            this.breite = Math.random() * (400 - 0);
+            this.hoehe = Math.random() * (400 - 0);
+        }
+        drawRect() {
+            this.contextRechteck.fillRect(this.xKoordinate, this.yKoordinate, this.breite, this.hoehe);
+        }
+    }
+    let arrayRechtecke = [];
+    for (let i = 0; i < 4; i++) {
+        arrayRechtecke.push(new Rechteck3());
+        arrayRechtecke[i].drawRect();
+    }
     //f)
     console.log("f)");
     //g)
