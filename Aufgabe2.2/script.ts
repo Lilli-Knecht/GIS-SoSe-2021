@@ -17,25 +17,30 @@ namespace Aufgabe2_2 {
 
     //b)
     console.log("b)");
-    /*console.log("mit 50");
+    console.log("mit 50");
     console.log(isEven(50));
     console.log("mit 75");
     console.log(isEven(75));
+    console.log("mit -1");
+    console.log(isEven(-1));
+    
     function isEven(_num1: number): boolean {
-        let istgerade: boolean;
         if (_num1 == 0) {
-            istgerade = true;
+            return true;
         }
         else if (_num1 == 1) {
-            istgerade = false;
+            return false;
+        }
+        else if (_num1 < 0) {
+            return isEven(_num1 * -1);
         }
         else {
-            isEven(_num1 - 2);
+            return isEven(_num1 - 2);
         }
-        return istgerade;
-    }*/
+    }
 
-    // Was passiert bei -1? 
+    /* Was passiert bei -1? Uncaught RangeError: Maximum call stack size exceeded --> geht immer weiter ins negative Unendliche. Lösung, Zahl positiv machen,
+    damit er "normal" schauen kann, ob positiv oder negativ */
 
     //c)
     console.log("c)");
@@ -99,26 +104,103 @@ namespace Aufgabe2_2 {
     //a)
     console.log("a)");
 
-    /*let array1: number[] = [1, 2, 3, 4, 5, 6];
+    let array1: number[] = [1, 2, 3, 4, 5, 6];
     console.log(backwards(array1));
 
     function backwards(_array: number[]): number[] {
-        let arraybackwards: number[] = _array;
-        let zwischenspeicher: number;
-        for (let i: number = 0; i < arraybackwards.length; i++) {
-            zwischenspeicher = arraybackwards[i];
-            arraybackwards[i] = arraybackwards[arraybackwards.length - 1];
-            arraybackwards[i + 1] = zwischenspeicher;
+        let arraybackwards: number[] = [];
+        for (let i: number = _array.length - 1; i >= 0 ; i--) {
+            arraybackwards.push(_array[i]);
         }
         return arraybackwards;
-    }*/
+    }
+
+    //b)
+    console.log("b)");
+
+    let array2: number[] = [7, 8, 9, 10, 11, 12];
+    console.log(join(array1, array2));
+    
+    function join(_arr1: number[], _arr2: number[]): number[] {
+        let arrayjoin: number[] = _arr1; 
+        for (let i: number = 0; i < _arr2.length; i++) {
+            arrayjoin.push(_arr2[i]);
+        }
+        return arrayjoin;
+    }
+
+
+    //c)
+    console.log("c)");
+    console.log(split(array1, 2, 4));
+    
+
+    function split(_arr: number[], _index1: number, _index2: number): number[] {
+        let arraysplit: number[] = [];
+        for (let i: number = _index1; i <= _index2; i++) {
+            arraysplit.push(_arr[i]);
+        }
+        return arraysplit;
+    }
+
+
+    //Aufgabe 3 - Endlich was virtuelles
+    console.log("Aufgabe 3");
+    //a)
+    console.log("a) siehe Seite");
+    let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("Canvas_3.a)");
+    let contextBoden: CanvasRenderingContext2D = canvas.getContext("2d");
+    let contextHimmel: CanvasRenderingContext2D = canvas.getContext("2d");
+    let contextHause: CanvasRenderingContext2D = canvas.getContext("2d");
+
+    contextBoden.fillStyle = "green"; 
+    contextBoden.fillRect(10, 300, 400, 50);
+
+    contextHimmel.fillStyle = "blue";
+    contextHimmel.fillRect(10, 10, 400, 300);
+
+    contextHause.lineWidth = 10;
+    contextHause.strokeRect(50, 220, 150, 100);
+    contextHause.fillStyle = "white";
+    contextHause.fillRect(50, 220, 150, 100);
+    contextHause.fillStyle = "black";
+    contextHause.fillRect(100, 260, 40, 60);
+
+
+
+
 
     //b)
     console.log("b)");
 
 
+
     //c)
     console.log("c)");
+
+
+
+    //d)
+    console.log("d)");
+
+
+    //e)
+    console.log("e)");
+
+
+    //f)
+    console.log("f)");
+
+
+    //g)
+    console.log("g)");
+    
+    
+    
+    
+    
+    
+    
     
     
 }
