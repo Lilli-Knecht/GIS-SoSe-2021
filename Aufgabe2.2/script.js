@@ -112,8 +112,13 @@ var Aufgabe2_2;
     console.log(split(array1, 2, 4));
     function split(_arr, _index1, _index2) {
         let arraysplit = [];
-        for (let i = _index1; i <= _index2; i++) {
-            arraysplit.push(_arr[i]);
+        if (_index1 < _index2) {
+            for (let i = _index1; i <= _index2; i++) {
+                arraysplit.push(_arr[i]);
+            }
+        }
+        else {
+            console.log("Index 1 muss größer als Index 2 sein, um einen Teil eines Arrays ausgeben zu können.");
         }
         return arraysplit;
     }
@@ -156,9 +161,25 @@ var Aufgabe2_2;
     contextBaum.beginPath();
     contextBaum.ellipse(310, 200, 30, 30, Math.PI / 4, 0, 2 * Math.PI);
     contextBaum.fill();
+    contextWolke.fillStyle = "lightgrey";
+    contextWolke.beginPath();
+    contextWolke.ellipse(250, 120, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
+    contextWolke.beginPath();
+    contextWolke.ellipse(220, 120, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
+    contextWolke.beginPath();
+    contextWolke.ellipse(230, 100, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
     contextWolke.fillStyle = "white";
     contextWolke.beginPath();
-    contextWolke.ellipse(250, 120, 20, 30, Math.PI / 4, 0, 2 * Math.PI);
+    contextWolke.ellipse(280, 100, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
+    contextWolke.beginPath();
+    contextWolke.ellipse(250, 100, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
+    contextWolke.beginPath();
+    contextWolke.ellipse(265, 90, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
     contextWolke.fill();
     //b)
     console.log("b) siehe Seite");
@@ -196,7 +217,7 @@ var Aufgabe2_2;
     }
     let rechteckzufall = new Rechteck2();
     rechteckzufall.drawRect();
-    //d)
+    //d) siehe c)
     console.log("d) siehe c)");
     //e)
     console.log("e) siehe Seite");
@@ -219,8 +240,39 @@ var Aufgabe2_2;
         arrayRechtecke[i].drawRect();
     }
     //f)
-    console.log("f)");
+    console.log("f) versucht, aber keine funtionierende Lösung gefunden");
     //g)
-    console.log("g)");
+    console.log("g) Versuch");
+    class Zeichenobjekt {
+        constructor(_x, _y, _breite) {
+            this.canvas5 = document.getElementById("Canvas_3.g)");
+            this.contextZeichenobjekt = this.canvas5.getContext("2d");
+            this.xKoordinate = _x;
+            this.yKoordinate = _y;
+            this.breite = _breite;
+        }
+    }
+    class RechteckVererbung extends Zeichenobjekt {
+        constructor(_x, _y, _breite, _hoehe) {
+            super(_x, _y, _breite);
+            this.hoehe = _hoehe;
+        }
+        show() {
+            this.contextZeichenobjekt.strokeRect(this.xKoordinate, this.yKoordinate, this.breite, this.hoehe);
+        }
+    }
+    class KreisVererbung extends Zeichenobjekt {
+        constructor(_x, _y, _breite) {
+            super(_x, _y, _breite);
+        }
+        show() {
+            this.contextZeichenobjekt.ellipse(this.xKoordinate, this.yKoordinate, this.breite, this.breite, Math.PI / 4, 0, 2 * Math.PI);
+            this.contextZeichenobjekt.fill();
+        }
+    }
+    let rechteckerbe = new RechteckVererbung(300, 100, 40, 70);
+    rechteckerbe.show();
+    let kreis1 = new KreisVererbung(200, 200, 40);
+    kreis1.show();
 })(Aufgabe2_2 || (Aufgabe2_2 = {}));
 //# sourceMappingURL=script.js.map

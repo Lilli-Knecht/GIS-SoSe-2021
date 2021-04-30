@@ -137,10 +137,16 @@ namespace Aufgabe2_2 {
 
     function split(_arr: number[], _index1: number, _index2: number): number[] {
         let arraysplit: number[] = [];
-        for (let i: number = _index1; i <= _index2; i++) {
-            arraysplit.push(_arr[i]);
+        if (_index1 < _index2) {
+            for (let i: number = _index1; i <= _index2; i++) {
+                arraysplit.push(_arr[i]);
+            }
+        }
+        else {
+            console.log("Index 1 muss größer als Index 2 sein, um einen Teil eines Arrays ausgeben zu können.");
         }
         return arraysplit;
+        
     }
 
 
@@ -188,9 +194,26 @@ namespace Aufgabe2_2 {
     contextBaum.ellipse(310, 200, 30, 30, Math.PI / 4, 0, 2 * Math.PI);
     contextBaum.fill();
 
+    contextWolke.fillStyle = "lightgrey";
+    contextWolke.beginPath();
+    contextWolke.ellipse(250, 120, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
+    contextWolke.beginPath();
+    contextWolke.ellipse(220, 120, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
+    contextWolke.beginPath();
+    contextWolke.ellipse(230, 100, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
+
     contextWolke.fillStyle = "white";
     contextWolke.beginPath();
-    contextWolke.ellipse(250, 120, 20, 30, Math.PI / 4, 0, 2 * Math.PI);
+    contextWolke.ellipse(280, 100, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
+    contextWolke.beginPath();
+    contextWolke.ellipse(250, 100, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
+    contextWolke.fill();
+    contextWolke.beginPath();
+    contextWolke.ellipse(265, 90, 20, 30, Math.PI / 2, 0, 2 * Math.PI);
     contextWolke.fill();
 
 
@@ -254,7 +277,7 @@ namespace Aufgabe2_2 {
     let rechteckzufall: Rechteck2 = new Rechteck2();
     rechteckzufall.drawRect();
 
-    //d)
+    //d) siehe c)
     console.log("d) siehe c)");
 
 
@@ -291,20 +314,56 @@ namespace Aufgabe2_2 {
 
 
     //f)
-    console.log("f)");
+    console.log("f) versucht, aber keine funtionierende Lösung gefunden");
 
 
     //g)
-    console.log("g)");
+    console.log("g) Versuch");
+    class Zeichenobjekt {
+        canvas5: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("Canvas_3.g)");
+        contextZeichenobjekt: CanvasRenderingContext2D = this.canvas5.getContext("2d");
+        breite: number;
+        xKoordinate: number;
+        yKoordinate: number;
+
+
+        constructor(_x: number, _y: number, _breite: number) {
+            this.xKoordinate = _x;
+            this.yKoordinate = _y;
+            this.breite = _breite;
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
+
+    class RechteckVererbung extends Zeichenobjekt {
+        hoehe: number;
+        constructor(_x: number, _y: number, _breite: number, _hoehe: number) {
+            super(_x, _y, _breite);
+            this.hoehe = _hoehe;
+        }
+        
+        show(): void {
+            this.contextZeichenobjekt.strokeRect(this.xKoordinate, this.yKoordinate, this.breite, this.hoehe);
+        }
+
+    }
+
+    class KreisVererbung extends Zeichenobjekt {
+        constructor(_x: number, _y: number, _breite: number) {
+            super(_x, _y, _breite);
+        }
+
+        show(): void {
+            this.contextZeichenobjekt.ellipse(this.xKoordinate, this.yKoordinate, this.breite, this.breite, Math.PI / 4, 0, 2 *  Math.PI);
+            this.contextZeichenobjekt.fill();
+        }
+    }
+
+    let rechteckerbe: RechteckVererbung = new RechteckVererbung(300, 100, 40, 70);
+    rechteckerbe.show();
+    let kreis1: KreisVererbung = new KreisVererbung(200, 200, 40);
+    kreis1.show();
+     
 }
 
 
