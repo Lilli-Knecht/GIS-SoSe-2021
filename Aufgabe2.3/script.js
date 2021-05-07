@@ -30,17 +30,20 @@ var Aufgabe2_3;
     function erstelleRec(_wieViel) {
         for (let i = 0; i < _wieViel; i++) {
             let div = document.createElement("div");
-            div.style.height = ((Math.random() * 200) + 1).toString() + "px";
-            div.style.width = ((Math.random() * 200) + 1).toString() + "px";
-            div.style.backgroundColor = "blue";
+            div.style.height = ((Math.random() * 50) + 1).toString() + "px";
+            div.style.width = ((Math.random() * 100) + 1).toString() + "px";
+            div.style.backgroundColor = `rgb(${zufallFarbe().toString()}, ${zufallFarbe().toString()}, ${zufallFarbe().toString()})`;
             document.body.appendChild(div);
         }
+    }
+    function zufallFarbe() {
+        let zufall = (Math.random() * 255);
+        return zufall;
     }
     erstelleRec(4);
     //Aufgabe 2
     // Thema: Segelschiff
     //a)
-    Aufgabe2_3.canvas = document.getElementById("Canvas_Schiff");
     //alle interfaces in der interface.ts
     //b) hier alle Daten reinspeichern als ein Objekt (=Schiff)
     //auch in der interface.ts

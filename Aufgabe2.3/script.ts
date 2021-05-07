@@ -33,11 +33,17 @@ namespace Aufgabe2_3 {
     function erstelleRec(_wieViel: number): void {
         for (let i: number = 0; i < _wieViel; i++) {
             let div: HTMLDivElement = document.createElement("div");
-            div.style.height = ((Math.random() * 200) + 1).toString() + "px";
-            div.style.width = ((Math.random() * 200) + 1).toString() + "px";
-            div.style.backgroundColor = "blue";
+            div.style.height = ((Math.random() * 50) + 1).toString() + "px";
+            div.style.width = ((Math.random() * 100) + 1).toString() + "px";
+            div.style.backgroundColor = `rgb(${zufallFarbe().toString()}, ${zufallFarbe().toString()}, ${zufallFarbe().toString()})`;
             document.body.appendChild(div);
         }
+    }
+
+
+    function zufallFarbe(): number {
+        let zufall: number = (Math.random() * 255);
+        return zufall; 
     }
 
     erstelleRec(4);
@@ -46,7 +52,7 @@ namespace Aufgabe2_3 {
     // Thema: Segelschiff
     //a)
 
-    export let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("Canvas_Schiff");
+    
 
     
     //alle interfaces in der interface.ts
