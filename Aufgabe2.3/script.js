@@ -42,10 +42,11 @@ var Aufgabe2_3;
     //a)
     Aufgabe2_3.canvas = document.getElementById("Canvas_Schiff");
     //alle interfaces in der interface.ts
-    //alle Daten der Auswahlmöglichkeiten in der data.ts 
-    console.log(Aufgabe2_3.alleRuempfe[1]);
     //b) hier alle Daten reinspeichern als ein Objekt (=Schiff)
+    //auch in der interface.ts
     //c) Variablen in der data.ts: Unterauswahl in eine Variable 
+    //alle Daten der Auswahlmöglichkeiten in der data.ts 
+    console.log(Aufgabe2_3.alleRuempfe[0]);
     //d) Skizze 
     //Aufgabe 3
 })(Aufgabe2_3 || (Aufgabe2_3 = {}));

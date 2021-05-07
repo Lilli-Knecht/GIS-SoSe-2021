@@ -47,18 +47,19 @@ namespace Aufgabe2_3 {
     //a)
 
     export let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("Canvas_Schiff");
+
     
     //alle interfaces in der interface.ts
-    //alle Daten der Auswahlmöglichkeiten in der data.ts 
-
-    console.log(alleRuempfe[1]);
 
 
     //b) hier alle Daten reinspeichern als ein Objekt (=Schiff)
+    //auch in der interface.ts
     
 
     //c) Variablen in der data.ts: Unterauswahl in eine Variable 
+    //alle Daten der Auswahlmöglichkeiten in der data.ts 
 
+    console.log(alleRuempfe[0]);
 
 
     //d) Skizze 

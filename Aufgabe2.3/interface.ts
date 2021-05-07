@@ -19,6 +19,6 @@ namespace Aufgabe2_3 {
     }
 
     export interface Steuerrad {
-        form: CanvasRenderingContext2D; //hier unterschiedlich, je nach Auswahl (Kreis, Dreieck und Rechteck)
+        form: CanvasRenderingContext2D; //immer ein Kreis 
     }
 }
