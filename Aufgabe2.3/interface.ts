@@ -1,8 +1,8 @@
-namespace Aufgabe2_3 {
+namespace Aufgabe2_3 { //die Interfaces
     export interface Schiff {
         rumpf: Rumpf;
-        segel: Segel;
-        steuerrad: Steuerrad;
+        //segel: Segel;
+        //steuerrad: Steuerrad;
     }
 
     export interface Rumpf { 

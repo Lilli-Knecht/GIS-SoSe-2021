@@ -24,7 +24,7 @@ var Aufgabe2_3;
     buttonZurueck.addEventListener("click", zuruecksetzen);
     function zuruecksetzen(_zurueck) {
         console.log(_zurueck);
-        location.href = "index.html";
+        location.href = "Startseite.html";
     }
     //fügt zufällig Rechtecke hinzu (so viele wie Übergabeparameter)
     function erstelleRec(_wieViel) {
@@ -36,6 +36,7 @@ var Aufgabe2_3;
             document.body.appendChild(div);
         }
     }
+    //zufällige Farbe generieren, dass es interessanter aussieht 
     function zufallFarbe() {
         let zufall = (Math.random() * 255);
         return zufall;
@@ -43,14 +44,11 @@ var Aufgabe2_3;
     erstelleRec(4);
     //Aufgabe 2
     // Thema: Segelschiff
-    //a)
-    //alle interfaces in der interface.ts
-    //b) hier alle Daten reinspeichern als ein Objekt (=Schiff)
-    //auch in der interface.ts
+    //a) alle interfaces in der interface.ts
+    //b) hier alle Daten reinspeichern als ein Objekt (=Schiff) auch in der interface.ts
     //c) Variablen in der data.ts: Unterauswahl in eine Variable 
-    //alle Daten der Auswahlmöglichkeiten in der data.ts 
-    console.log(Aufgabe2_3.alleRuempfe[0]);
-    //d) Skizze 
-    //Aufgabe 3
+    //alle Daten der Auswahlmöglichkeiten in der data.ts
+    //d) Skizze handschriftlich angefertigt
+    //Aufgabe 3 in der scrip2.ts 
 })(Aufgabe2_3 || (Aufgabe2_3 = {}));
 //# sourceMappingURL=script.js.map

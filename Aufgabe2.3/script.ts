@@ -1,4 +1,4 @@
-namespace Aufgabe2_3 {
+namespace Aufgabe2_3 { //script für die Startseite mit Aufgabe 1
     //Aufgabe 1 
     //Button, der ein weiteres Rechteck hinzufügt
     let buttonHinzu: HTMLButtonElement = document.createElement("button");
@@ -25,7 +25,7 @@ namespace Aufgabe2_3 {
 
     function zuruecksetzen(_zurueck: Event): void {
         console.log(_zurueck);
-        location.href = "index.html";
+        location.href = "Startseite.html";
     }
     
 
@@ -40,7 +40,7 @@ namespace Aufgabe2_3 {
         }
     }
 
-
+    //zufällige Farbe generieren, dass es interessanter aussieht 
     function zufallFarbe(): number {
         let zufall: number = (Math.random() * 255);
         return zufall; 
@@ -50,28 +50,13 @@ namespace Aufgabe2_3 {
 
     //Aufgabe 2
     // Thema: Segelschiff
-    //a)
-
-    
-
-    
-    //alle interfaces in der interface.ts
-
-
-    //b) hier alle Daten reinspeichern als ein Objekt (=Schiff)
-    //auch in der interface.ts
-    
-
+    //a) alle interfaces in der interface.ts
+    //b) hier alle Daten reinspeichern als ein Objekt (=Schiff) auch in der interface.ts
     //c) Variablen in der data.ts: Unterauswahl in eine Variable 
-    //alle Daten der Auswahlmöglichkeiten in der data.ts 
+    //alle Daten der Auswahlmöglichkeiten in der data.ts
+    //d) Skizze handschriftlich angefertigt
 
-    console.log(alleRuempfe[0]);
-
-
-    //d) Skizze 
-
-
-    //Aufgabe 3
+    //Aufgabe 3 in der scrip2.ts 
 
 
 
