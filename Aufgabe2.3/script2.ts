@@ -6,37 +6,26 @@ namespace Aufgabe2_3 {
     //c) 
 
     let wellenbrecher: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("Auswahl1"); //Button 
-    wellenbrecher.addEventListener("click", speichern1);
+    wellenbrecher.dataset.name = "Wellenbrecher";
+    wellenbrecher.dataset.laenge = "200m";
+    wellenbrecher.addEventListener("click", speichern);
     
     let morgenroete: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("Auswahl2");
-    morgenroete.addEventListener("click", speichern2);
+    morgenroete.dataset.name = "Morgenröte";
+    morgenroete.dataset.laenge = "400m";
+    morgenroete.addEventListener("click", speichern);
 
     let arielle: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("Auswahl3");
-    arielle.addEventListener("click", speichern3);
+    arielle.dataset.name = "Arielle";
+    arielle.dataset.laenge = "150m";
+    arielle.addEventListener("click", speichern);
     
 
-    //ich weis, dass das nicht elegant gelöst ist, aber ich wusste mir mit den Indizes für die zeigInfo nach Stunden des Ausprobierens nicht mehr zu helfen und so funktioniert es wenigstens 
-    function speichern1(_speichern: Event): void {
+    function speichern(_speichern: Event): void {
         //console.log(_speichern); //hier würde dann der Rumpf in die Konfiguration im Objekt Schiff gespeichert werden (kommt in den folgenden Abgaben)
-        //die Auswahl Rumpf würde dann in das Objekt Schiff gespeichert werden 
-        zeigInfo(0);
-    }
-
-    function speichern2(_speichern: Event): void {
-        //console.log(_speichern); //hier würde dann der Rumpf in die Konfiguration im Objekt Schiff gespeichert werden (kommt in den folgenden Abgaben)
-        //die Auswahl Rumpf würde dann in das Objekt Schiff gespeichert werden 
-        zeigInfo(1);
-    }
-
-    function speichern3(_speichern: Event): void {
-        //console.log(_speichern); //hier würde dann der Rumpf in die Konfiguration im Objekt Schiff gespeichert werden (kommt in den folgenden Abgaben)
-        //die Auswahl Rumpf würde dann in das Objekt Schiff gespeichert werden 
-        zeigInfo(2);
-    }
-
-    function zeigInfo(_index: number): void {
-        console.log("Name:" + alleRuempfe[_index].name);
-        console.log("Länge:" + alleRuempfe[_index].laenge);
+        //die Auswahl Rumpf würde dann in das Objekt Schiff gespeichert werden, was momentan aber noch einen TSLint-Fehler gibt, das mein Schiff ja auch ein Segel und ein Steuerrad braucht
+        console.log(_speichern.target);
+        
     }
 
 }
