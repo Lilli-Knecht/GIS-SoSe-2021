@@ -1,5 +1,4 @@
 body{
-    position:relative;
     width:800px;
     margin:auto;
     background-color: lightblue;
@@ -13,6 +12,7 @@ h1{
     font-size: 7rem;
     width: min-content;
     margin:auto;
+    font-style: italic;
 }
 
 h1:hover{
@@ -27,12 +27,8 @@ h1:hover{
     border: 5px solid white;
     margin: auto;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
-}
-
-img{
-    margin: auto;
 }
 
 h2{
@@ -44,24 +40,31 @@ h2{
 
 }
 
-#Auswahl1{
-    position: absolute;
-    left: 50px;
-    margin-top: 50px;
-}
-
-#Auswahl2{
-    position: absolute;
-    left: 400px;
-    margin-top: 50px;
-}
-
-#Auswahl3{
-    position: absolute;
-    left: 750px;
-    margin-top: 50px;
-}
-
 img{
-    width: 100%;
+    background-color: white;
+    width:100%;
 }
+
+#Auswahlanzeige{
+    display: flex;
+    justify-content: center;
+}
+
+.rumpf{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    color: black; 
+}
+
+.rumpf p{
+    text-align: center;
+    font-size: larger;
+}
+
+.rumpf button{
+    background-color: deepskyblue;
+    width: 100px;
+    align-self: center;
+}
+
