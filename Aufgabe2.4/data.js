@@ -23,13 +23,13 @@ var Aufgabe2_4;
         {
             "ruempfe": [
                 {
-                    "image": "Bilddateien/Wellenbrecher.PNG", "laenge": "200m", name: "Wellenbrecher"
+                    "image": "Bilddateien/Wellenbrecher.PNG", "laenge": "200m", "name": "Wellenbrecher"
                 },
                 {
-                    "image": "Bilddateien/Morgenröte.PNG", "laenge": "400m", name: "Morgenröte"
+                    "image": "Bilddateien/Morgenröte.PNG", "laenge": "400m", "name": "Morgenröte"
                 },
                 {
-                    "image": "Bilddateien/Arielle.PNG", "laenge": "150m", name: "Arielle"
+                    "image": "Bilddateien/Arielle.PNG", "laenge": "150m", "name": "Arielle"
                 }
             ],
             "segel": [
