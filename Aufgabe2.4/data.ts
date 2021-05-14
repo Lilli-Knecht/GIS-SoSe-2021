@@ -24,35 +24,35 @@ namespace Aufgabe2_4 {
         {
             "ruempfe": [
                 {
-                    "image": "Bilddateien/Wellenbrecher.PNG", "laenge": "200m", "name": "Wellenbrecher"
+                    "image": "Bilddateien/Wellenbrecher.PNG", "eigenschaft1": "200m", "eigenschaft2": "Wellenbrecher"
                 },
                 {
-                    "image": "Bilddateien/Morgenröte.PNG", "laenge": "400m", "name": "Morgenröte"
+                    "image": "Bilddateien/Morgenröte.PNG", "eigenschaft1": "400m", "eigenschaft2": "Morgenröte"
                 },
                 {
-                    "image": "Bilddateien/Arielle.PNG", "laenge": "150m", "name": "Arielle"
+                    "image": "Bilddateien/Arielle.PNG", "eigenschaft1": "150m", "eigenschaft2": "Arielle"
                 }
             ],
             "segel": [
                 {
-                    "image": "Bilddateien/Segel_pink.PNG", "material": "Dacron-Gewebe"
+                    "image": "Bilddateien/Segel_pink.PNG", "eigenschaft1": "Dacron-Gewebe"
                 },
                 {
-                    "image": "Bilddateien/Segel_orange.PNG", "material": "Cruising-Laminat"
+                    "image": "Bilddateien/Segel_orange.PNG", "eigenschaft1": "Cruising-Laminat"
                 },
                 {
-                    "image": "Bilddateien/Segel_grün.PNG", "material": "Custom_Laminat"
+                    "image": "Bilddateien/Segel_grün.PNG", "eigenschaft1": "Custom_Laminat"
                 }
             ],
             "steuerraeder": [
                 {
-                    "image": "Bilddateien/Steuer_schwarz.PNG", "holzart": "Schwarzholz"
+                    "image": "Bilddateien/Steuer_schwarz.PNG", "eigenschaft1": "Schwarzholz"
                 },
                 {
-                    "image": "Bilddateien/Steuer_braun.PNG", "holzart": "Eiche"
+                    "image": "Bilddateien/Steuer_braun.PNG", "eigenschaft1": "Eiche"
                 },
                 {
-                    "image": "Bilddateien/Steuer_grau.PNG", "holzart": "Fichte"
+                    "image": "Bilddateien/Steuer_grau.PNG", "eigenschaft1": "Fichte"
                 }
             ]
         }

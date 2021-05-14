@@ -1,30 +1,22 @@
 namespace Aufgabe2_4 { //die Interfaces
     export interface Schiff {
         rumpf: Rumpf;
-        segel: Segel;
-        steuerrad: Steuerrad;
+        segel: Schiffteil;
+        steuerrad: Schiffteil;
     }
 
     export interface AlleAuswahlmöglichkeiten {
         ruempfe: Rumpf[];
-        segel: Segel[];
-        steuerraeder: Steuerrad[];
+        segel: Schiffteil[];
+        steuerraeder: Schiffteil[];
     }
 
-    export interface Rumpf { 
+    export interface Schiffteil { //Segel und Steuerrad 
         image: string;
-        name: string; 
-        laenge: string;
+        eigenschaft1: string;
     }
 
-    export interface Segel {
-        image: string;
-        material: string;
-
-    }
-
-    export interface Steuerrad {
-        image: string;
-        holzart: string;
+    export interface Rumpf extends Schiffteil { 
+        eigenschaft2: string;
     }
 }

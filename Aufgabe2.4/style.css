@@ -7,12 +7,13 @@ body{
 }
 
 h1{
+    display: flex;
+    justify-content: center;
     transition: color 2s ease-in-out 0s;
     color:black;
     font-size: 7rem;
     width: min-content;
     margin:auto;
-    font-style: italic;
 }
 
 h1:hover{
@@ -45,26 +46,52 @@ img{
     width:100%;
 }
 
-#Auswahlanzeige{
+#icon{
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+#auswahlanzeige{
     display: flex;
     justify-content: center;
 }
 
-.rumpf{
+.rumpf, .schiffteil{
     display: flex;
     flex-direction: column;
     margin: 20px;
     color: black; 
 }
 
-.rumpf p{
+.rumpf p, .schiffteil p{
     text-align: center;
     font-size: larger;
 }
 
-.rumpf button{
+.rumpf button, .schiffteil button{
     background-color: deepskyblue;
     width: 100px;
     align-self: center;
 }
+
+#bisherigeAuswahl{
+    display: flex;
+    justify-content: center;
+}
+
+.auswahlBisher{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+}
+
+#Rumpfseite, #Segelseite, #Steuerseite{
+    font-style: italic;
+    color: blue;
+}
+
+
 
