@@ -120,6 +120,6 @@ var Aufgabe2_4;
         bisherigeAuswahl.appendChild(auswahlImage3);
     }
     //Aufgabe 2 Seite mit dem fertigen Schiff 
-    //Endauswahl.html
+    //Endauswahl.html hier noch mein Schiff interface benutzen
 })(Aufgabe2_4 || (Aufgabe2_4 = {}));
 //# sourceMappingURL=script.js.map
