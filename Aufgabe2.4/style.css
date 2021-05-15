@@ -3,7 +3,7 @@ body{
     margin:auto;
     background-color: lightblue;
     font-family: Arial, Helvetica, sans-serif;
-    color:dimgray;
+    color:blue;
 }
 
 h1{
@@ -41,7 +41,7 @@ h2{
 
 }
 
-img{
+.rumpf img, .schiffteil img{
     background-color: white;
     width:100%;
 }
@@ -53,19 +53,19 @@ img{
     width: 20%;
 }
 
-#auswahlanzeige{
+#auswahlanzeige, #fertigesSchiff{
     display: flex;
     justify-content: center;
 }
 
-.rumpf, .schiffteil{
+.rumpf, .schiffteil, .auswahlBisher{
     display: flex;
     flex-direction: column;
     margin: 20px;
     color: black; 
 }
 
-.rumpf p, .schiffteil p{
+.rumpf p, .schiffteil p, .meinSchiff p{
     text-align: center;
     font-size: larger;
 }
@@ -81,17 +81,28 @@ img{
     justify-content: center;
 }
 
-.auswahlBisher{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 30%;
-}
-
 #Rumpfseite, #Segelseite, #Steuerseite{
     font-style: italic;
-    color: blue;
+    color: black;
 }
+
+.auswahlBisher img {
+    width: 100%;
+    background-color: white;
+}
+
+.meinSchiff{
+    display: flex;
+    flex-direction: column-reverse;
+    color: black;
+}
+
+.meinSchiff img{
+    width: 35%;
+    align-self:center;
+}
+
+
 
 
 

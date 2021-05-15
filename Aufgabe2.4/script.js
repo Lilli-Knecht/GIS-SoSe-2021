@@ -2,7 +2,7 @@
 var Aufgabe2_4;
 (function (Aufgabe2_4) {
     let meineAuswahl = konvertieren();
-    function rumpfDiv(_auswahl, _index) {
+    function rumpfDiv(_auswahl) {
         let div = document.createElement("div");
         div.classList.add("rumpf");
         let image = document.createElement("img");
@@ -24,31 +24,12 @@ var Aufgabe2_4;
             console.log("Name: " + _auswahl.eigenschaft2);
             console.log("Länge: " + _auswahl.eigenschaft1); //Auskunft noch als Überprüfung dringelassen 
             sessionStorage.setItem("image1", _auswahl.image); //Bild des ausgewählten Rumpfes speichern 
+            sessionStorage.setItem("laengeRumpf", _auswahl.eigenschaft1); //Länge (eigenschaft1) des ausgwähltes Rumpfes speichern
+            sessionStorage.setItem("nameRumpf", _auswahl.eigenschaft2); //Name (eigenschaft2) des ausgwähltes Rumpfes speichern
             location.href = "Segel.html"; //1c) hier auf nächste Seite verlinken 
         }
     }
-    function anzeigeKategorie(_auswahl) {
-        let anzeige = document.getElementById("auswahlanzeige");
-        if (document.querySelector("title").getAttribute("id") == "Seite1") { //Rumpfseite
-            for (let i = 0; i < _auswahl.ruempfe.length; i++) { //dynamisch Auswahlmöglichkeiten anzeigen lassen 
-                let div = rumpfDiv(_auswahl.ruempfe[i], i);
-                anzeige.appendChild(div);
-            }
-        }
-        else if (document.querySelector("title").getAttribute("id") == "Seite2") { //Segelseite
-            for (let i = 0; i < _auswahl.segel.length; i++) { //dynamisch Auswahlmöglichkeiten anzeigen lassen 
-                let div = schiffteilDiv(_auswahl.segel[i], i);
-                anzeige.appendChild(div);
-            }
-        }
-        else if (document.querySelector("title").getAttribute("id") == "Seite3") { //Steuerseite
-            for (let i = 0; i < _auswahl.segel.length; i++) { //dynamisch Auswahlmöglichkeiten anzeigen lassen 
-                let div = schiffteilDiv(_auswahl.steuerraeder[i], i);
-                anzeige.appendChild(div);
-            }
-        }
-    }
-    function schiffteilDiv(_auswahl, _index) {
+    function schiffteilDiv(_auswahl) {
         let div = document.createElement("div");
         div.classList.add("schiffteil");
         let image = document.createElement("img");
@@ -66,6 +47,7 @@ var Aufgabe2_4;
                 console.log("Ihre Auswahl:");
                 console.log("Name: " + _auswahl.eigenschaft1); //Auskunft noch als Überprüfung dringelassen 
                 sessionStorage.setItem("image2", _auswahl.image); //Bild des ausgewählten Segels speichern 
+                sessionStorage.setItem("materialSegel", _auswahl.eigenschaft1); //Material (eigenschaft1) des ausgewählten Segels speichern 
                 location.href = "Steuer.html"; //1c) hier auf nächste Seite verlinken 
             }
         }
@@ -76,12 +58,33 @@ var Aufgabe2_4;
                 console.log("Ihre Auswahl:");
                 console.log("Name: " + _auswahl.eigenschaft1); //Auskunft noch als Überprüfung dringelassen 
                 sessionStorage.setItem("image3", _auswahl.image); //Bild des ausgewählten Segels speichern 
+                sessionStorage.setItem("holzartSteuer", _auswahl.eigenschaft1); //Holzart (eigenschaft1) des ausgewählten Steuerrads speichern 
                 location.href = "Endauswahl.html"; //1c) hier auf nächste Seite verlinken 
             }
         }
         return div;
     }
-    //auswahlRuempfe(auswahl.ruempfe); von Aufgabe 2.3 (hier werden die Bilder angezeigt)
+    function anzeigeKategorie(_auswahl) {
+        let anzeige = document.getElementById("auswahlanzeige");
+        if (document.querySelector("title").getAttribute("id") == "Seite1") { //Rumpfseite
+            for (let i = 0; i < _auswahl.ruempfe.length; i++) { //dynamisch Auswahlmöglichkeiten anzeigen lassen 
+                let div = rumpfDiv(_auswahl.ruempfe[i]);
+                anzeige.appendChild(div);
+            }
+        }
+        else if (document.querySelector("title").getAttribute("id") == "Seite2") { //Segelseite
+            for (let i = 0; i < _auswahl.segel.length; i++) { //dynamisch Auswahlmöglichkeiten anzeigen lassen 
+                let div = schiffteilDiv(_auswahl.segel[i]);
+                anzeige.appendChild(div);
+            }
+        }
+        else if (document.querySelector("title").getAttribute("id") == "Seite3") { //Steuerseite
+            for (let i = 0; i < _auswahl.segel.length; i++) { //dynamisch Auswahlmöglichkeiten anzeigen lassen 
+                let div = schiffteilDiv(_auswahl.steuerraeder[i]);
+                anzeige.appendChild(div);
+            }
+        }
+    }
     //Aufgabe 1a) JSON konvertieren 
     function konvertieren() {
         let auswahl = JSON.parse(Aufgabe2_4.auswahlJSON);
@@ -90,36 +93,49 @@ var Aufgabe2_4;
     anzeigeKategorie(meineAuswahl); //Auwahl anzeigen lassen 
     //Aufgabe 1b) am besten sessionStorage verwenden 
     //oben in der function auswahlRumpf bzw. auswahlSegel bzw. auswahlSteuer 
-    //Aufgabe 1c) auf nächste Seite verlinken siehe Code oben 
+    //Aufgabe 1c) auf nächste Seite verlinken siehe Code oben (auswahlRumpf bzw. auswahlSegel bzw. auswahlSteuer)
     //Aufgabe 1d) Anzeige der bisherigen Auswahl 
-    //Wert wieder anzeigen lassen: getItem 
-    let bisherigeAuswahl = document.getElementById("bisherigeAuswahl");
-    bisherigeAuswahl.classList.add("auswahlBisher");
-    if ((document.querySelector("title").getAttribute("id") == "Seite2")) { //hier Segelseite (Auswahl Rumpf soll angezeigt werden)
-        let auswahlImage = document.createElement("img");
-        auswahlImage.src = sessionStorage.getItem("image1");
-        bisherigeAuswahl.appendChild(auswahlImage);
+    //Bild anzeigen 
+    if ((document.querySelector("title").getAttribute("id") == "Seite2") || (document.querySelector("title").getAttribute("id") == "Seite3")) {
+        let auswahl1 = document.getElementById("rumpfauswahl");
+        auswahl1.classList.add("auswahlBisher");
+        if ((document.querySelector("title").getAttribute("id") == "Seite2")) { //hier Segelseite (Auswahl Rumpf soll angezeigt werden)
+            let auswahlImage = document.createElement("img");
+            auswahlImage.src = sessionStorage.getItem("image1");
+            auswahl1.appendChild(auswahlImage);
+        }
+        if ((document.querySelector("title").getAttribute("id") == "Seite3")) { //hier Steuerradseite (Auswahl Rumpf und Segel sollen angezeigt werden)
+            let auswahl2 = document.getElementById("segelauswahl");
+            auswahl2.classList.add("auswahlBisher");
+            let auswahlImage = document.createElement("img");
+            auswahlImage.src = sessionStorage.getItem("image1");
+            auswahl1.appendChild(auswahlImage);
+            let auswahlImage2 = document.createElement("img");
+            auswahlImage2.src = sessionStorage.getItem("image2");
+            auswahl2.appendChild(auswahlImage2);
+        }
     }
-    if ((document.querySelector("title").getAttribute("id") == "Seite3")) { //hier Steuerradseite (Auswahl Rumpf und Segel sollen angezeigt werden)
-        let auswahlImage = document.createElement("img");
-        auswahlImage.src = sessionStorage.getItem("image1");
-        bisherigeAuswahl.appendChild(auswahlImage);
-        let auswahlImage2 = document.createElement("img");
-        auswahlImage2.src = sessionStorage.getItem("image2");
-        bisherigeAuswahl.appendChild(auswahlImage2);
+    //Aufgabe 2 Seite mit dem fertigen Schiff
+    if ((document.querySelector("title").getAttribute("id") == "Seite4")) { //Endauswahl.html
+        let meinSchiff = {
+            rumpf: { image: sessionStorage.getItem("image1"), eigenschaft1: sessionStorage.getItem("laengeRumpf"), eigenschaft2: sessionStorage.getItem("nameRumpf") },
+            segel: { image: sessionStorage.getItem("image2"), eigenschaft1: sessionStorage.getItem("materialSegel") },
+            steuerrad: { image: sessionStorage.getItem("image3"), eigenschaft1: sessionStorage.getItem("holzartSteuer") }
+        };
+        let schiff = document.getElementById("fertigesSchiff");
+        schiff.classList.add("meinSchiff");
+        let rumpf = document.createElement("img");
+        rumpf.src = meinSchiff.rumpf.image;
+        schiff.appendChild(rumpf);
+        let segel = document.createElement("img");
+        segel.src = meinSchiff.segel.image;
+        schiff.appendChild(segel);
+        let steuer = document.createElement("img");
+        steuer.src = meinSchiff.steuerrad.image;
+        schiff.appendChild(steuer);
+        let info = document.createElement("p");
+        info.innerText = "Name: " + meinSchiff.rumpf.eigenschaft2 + "; Länge: " + meinSchiff.rumpf.eigenschaft1 + "; Segelmaterial: " + meinSchiff.segel.eigenschaft1 + "; Steuerrad-Holzart: " + meinSchiff.steuerrad.eigenschaft1;
+        schiff.appendChild(info);
     }
-    if ((document.querySelector("title").getAttribute("id") == "Seite4")) { //hier Endauswahlseite (hier alles Auswahlmöglichleiten)
-        let auswahlImage = document.createElement("img");
-        auswahlImage.src = sessionStorage.getItem("image1");
-        bisherigeAuswahl.appendChild(auswahlImage);
-        let auswahlImage2 = document.createElement("img");
-        auswahlImage2.src = sessionStorage.getItem("image2");
-        bisherigeAuswahl.appendChild(auswahlImage2);
-        let auswahlImage3 = document.createElement("img");
-        auswahlImage3.src = sessionStorage.getItem("image3");
-        bisherigeAuswahl.appendChild(auswahlImage3);
-    }
-    //Aufgabe 2 Seite mit dem fertigen Schiff 
-    //Endauswahl.html hier noch mein Schiff interface benutzen
 })(Aufgabe2_4 || (Aufgabe2_4 = {}));
 //# sourceMappingURL=script.js.map
