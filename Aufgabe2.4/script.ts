@@ -167,9 +167,8 @@ namespace Aufgabe2_4 {
         steuer.src = meinSchiff.steuerrad.image;
         schiff.appendChild(steuer);
 
-        let info: HTMLParagraphElement = document.createElement("p");
+        let info: HTMLParagraphElement = <HTMLDivElement> document.getElementById("info");
         info.innerText = "Name: " + meinSchiff.rumpf.eigenschaft2 + "; Länge: " + meinSchiff.rumpf.eigenschaft1 + "; Segelmaterial: " + meinSchiff.segel.eigenschaft1 + "; Steuerrad-Holzart: " + meinSchiff.steuerrad.eigenschaft1;
-        schiff.appendChild(info);
     }
     
 }

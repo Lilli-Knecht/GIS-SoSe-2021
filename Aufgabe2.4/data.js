@@ -40,7 +40,7 @@ var Aufgabe2_4;
                     "image": "Bilddateien/Segel_orange.PNG", "eigenschaft1": "Cruising-Laminat"
                 },
                 {
-                    "image": "Bilddateien/Segel_grün.PNG", "eigenschaft1": "Custom_Laminat"
+                    "image": "Bilddateien/Segel_grün.PNG", "eigenschaft1": "Custom-Laminat"
                 }
             ],
             "steuerraeder": [
