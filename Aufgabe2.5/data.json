@@ -1,0 +1,36 @@
+{
+    "ruempfe": [
+        {
+            "image": "Bilddateien/Wellenbrecher.PNG", "eigenschaft1": "200m", "eigenschaft2": "Wellenbrecher"
+        },
+        {
+            "image": "Bilddateien/Morgenröte.PNG", "eigenschaft1": "400m", "eigenschaft2": "Morgenröte"
+        },
+        {
+            "image": "Bilddateien/Arielle.PNG", "eigenschaft1": "150m", "eigenschaft2": "Arielle"
+        }
+    ],
+    "segel": [
+        {
+            "image": "Bilddateien/Segel_pink.PNG", "eigenschaft1": "Dacron-Gewebe"
+        },
+        {
+            "image": "Bilddateien/Segel_orange.PNG", "eigenschaft1": "Cruising-Laminat"
+        },
+        {
+            "image": "Bilddateien/Segel_grün.PNG", "eigenschaft1": "Custom-Laminat"
+        }
+    ],
+    "steuerraeder": [
+        {
+            "image": "Bilddateien/Steuer_schwarz.PNG", "eigenschaft1": "Schwarzholz"
+        },
+        {
+            "image": "Bilddateien/Steuer_braun.PNG", "eigenschaft1": "Eiche"
+        },
+        {
+            "image": "Bilddateien/Steuer_grau.PNG", "eigenschaft1": "Fichte"
+        }
+    ]
+}
+        
