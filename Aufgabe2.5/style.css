@@ -46,7 +46,7 @@ p{
     font-size: larger;
 }
 
-.rumpf img, .schiffteil img, .auswahlBisher{
+.rumpf img, .schiffteil img, .auswahlBisher img{
     background-color: white;
     width:100%;
 }
@@ -67,7 +67,7 @@ p{
     display: flex;
     flex-direction: column;
     margin: 20px;
-    color: black; 
+    color: black;
 }
 
 .rumpf p, .schiffteil p{
@@ -90,8 +90,6 @@ p{
     font-style: italic;
     color:darkblue;
 }
-
-
 
 .meinSchiff{
     display: flex;

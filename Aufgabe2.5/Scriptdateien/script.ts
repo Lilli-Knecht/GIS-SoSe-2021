@@ -1,6 +1,17 @@
 namespace Aufgabe2_5 {
 
-    let meineAuswahl: AlleAuswahlmöglichkeiten = konvertieren();
+    //b) 
+
+    async function datenEinlesen(_url: RequestInfo): Promise<void> {
+        let antwort: Response = await fetch(_url);
+        console.log("Response", antwort);
+        let daten: AlleAuswahlmöglichkeiten = await antwort.json();
+        anzeigeKategorie(daten);
+        
+    }
+
+    datenEinlesen("https://lilli-knecht.github.io/GIS-SoSe-2021/Aufgabe2.5/data.json");
+
 
     function rumpfDiv(_auswahl: Rumpf): HTMLDivElement {
         
@@ -102,24 +113,6 @@ namespace Aufgabe2_5 {
         
     }
 
-
-    //Aufgabe 1a) JSON konvertieren 
-
-    function konvertieren(): AlleAuswahlmöglichkeiten {
-        let auswahl: AlleAuswahlmöglichkeiten = JSON.parse(auswahlJSON); //hier mit dem fetch arbeiten 
-        return auswahl;
-    }
-
-    anzeigeKategorie(meineAuswahl); //Auwahl anzeigen lassen 
-
-    //Aufgabe 1b) am besten sessionStorage verwenden 
-    //oben in der function auswahlRumpf bzw. auswahlSegel bzw. auswahlSteuer 
-
-    //Aufgabe 1c) auf nächste Seite verlinken siehe Code oben (auswahlRumpf bzw. auswahlSegel bzw. auswahlSteuer)
-
-    //Aufgabe 1d) Anzeige der bisherigen Auswahl 
-    //Bild anzeigen 
-
     if ((document.querySelector("title").getAttribute("id") == "Seite2" ) || (document.querySelector("title").getAttribute("id") == "Seite3" )) {
         let auswahl1: HTMLDivElement = <HTMLDivElement> document.getElementById("rumpfauswahl");
         auswahl1.classList.add("auswahlBisher");
@@ -143,8 +136,6 @@ namespace Aufgabe2_5 {
     }
     
 
-    //Aufgabe 2 Seite mit dem fertigen Schiff
-
     if ((document.querySelector("title").getAttribute("id") == "Seite4" )) { //Endauswahl.html
         let meinSchiff: Schiff = { //hier alles in mein Schiff reinspeichern
             rumpf: {image: sessionStorage.getItem("image1"), eigenschaft1: sessionStorage.getItem("laengeRumpf"), eigenschaft2: sessionStorage.getItem("nameRumpf")},
@@ -167,8 +158,24 @@ namespace Aufgabe2_5 {
         steuer.src = meinSchiff.steuerrad.image;
         schiff.appendChild(steuer);
 
-        let info: HTMLParagraphElement = <HTMLDivElement> document.getElementById("info");
+        let info: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("info");
         info.innerText = "Name: " + meinSchiff.rumpf.eigenschaft2 + "; Länge: " + meinSchiff.rumpf.eigenschaft1 + "; Segelmaterial: " + meinSchiff.segel.eigenschaft1 + "; Steuerrad-Holzart: " + meinSchiff.steuerrad.eigenschaft1;
+    
+
+        //c) Funktion, welche Daten an die URL übergibt und Antwort erhält 
+        async function datenSchicken(_url: RequestInfo): Promise<void> {
+            let query: URLSearchParams = new URLSearchParams(sessionStorage);
+            _url = _url + "?" + query.toString();
+            let antwort: Response = await fetch(_url);
+            let ausgabe: string = await antwort.text();
+            let rueckgabe: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("serverausgabe"); //an meine Seite anheften 
+            rueckgabe.innerText = ausgabe;
+
+        }
+
+        datenSchicken("https://gis-communication.herokuapp.com");
     }
+
+     
     
 }
