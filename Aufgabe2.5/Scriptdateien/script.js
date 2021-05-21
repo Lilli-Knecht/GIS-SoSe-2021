@@ -138,6 +138,12 @@ var Aufgabe2_5;
             let ausgabe = await antwort.text();
             let rueckgabe = document.getElementById("serverausgabe"); //an meine Seite anheften 
             rueckgabe.innerText = ausgabe;
+            if (ausgabe.match("message")) { //hier Formatierung 
+                rueckgabe.style.color = "green";
+            }
+            else {
+                rueckgabe.style.color = "red";
+            }
         }
         datenSchicken("https://gis-communication.herokuapp.com");
     }

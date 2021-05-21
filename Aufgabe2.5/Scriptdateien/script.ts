@@ -171,6 +171,14 @@ namespace Aufgabe2_5 {
             let rueckgabe: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("serverausgabe"); //an meine Seite anheften 
             rueckgabe.innerText = ausgabe;
 
+            if (ausgabe.match("message")) { //hier Formatierung 
+                rueckgabe.style.color = "green";
+            }
+
+            else {
+                rueckgabe.style.color = "red";
+            }
+
         }
 
         datenSchicken("https://gis-communication.herokuapp.com");

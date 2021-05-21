@@ -108,3 +108,7 @@ p{
     color: black;
     font-size: larger;
 }
+
+#serverausgabe{
+    background-color: white;
+}
