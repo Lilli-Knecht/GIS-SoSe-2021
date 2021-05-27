@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script> src="script.js"</script>
     <title>Document</title>
 </head>
 <body>
-    <h2>Teilaufgabe 1</h2>
-    <form method="post" action="https://gis-example.herokuapp.com/">
+    <h2>Teilaufgabe 1 mit GET</h2>
+    <h2>Teilaufgabe 2 mit Fetch</h2>
+    <form method="fetch" action="https://gis-example.herokuapp.com">
         <input class="Kontakt" type="text" name="vorname" placeholder="Vorname">
         <input class="Kontakt" type="text" name="nachname" placeholder="Nachname">
-        <input class="Kontakt" type="text" name="email" placeholder="Adresse">
+        <input class="Kontakt" type="email" name="email" placeholder="E-Mail">
+        <input class="Kontakt" type="checkbox" name="Box" placeholder="Box">
         <p id="zusatz">Mit Absenden der Nachricht bestätige ich den <em>Datenschutz</em></p>
         <button type="submit" class="Kontakt" >Abschicken</button>
     </form>
