@@ -17,10 +17,11 @@ var Aufgabe3_1;
     }
     function handleRequest(_request, _response) {
         console.log("I hear voices!"); //Konsolenausgabe 
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
-        _response.write(_request.url);
-        _response.end();
+        console.log(_request.url);
+        _response.setHeader("content-type", "text/html; charset=utf-8"); //Eigenschaften; Typ:Html
+        _response.setHeader("Access-Control-Allow-Origin", "*"); //Zugriffserlaubnis --> * alle dürfen zugreifen 
+        _response.write(_request.url); //was wird zurückgegeben: Als Antwort auf die Anfrage 
+        _response.end(); //Antwort fertig und zurückschicken 
     }
 })(Aufgabe3_1 = exports.Aufgabe3_1 || (exports.Aufgabe3_1 = {}));
 //# sourceMappingURL=serverscript.js.map
