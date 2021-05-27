@@ -1,0 +1,21 @@
+{
+  "name": "gis-sose-2021",
+  "version": "1.0.0",
+  "description": "Hallo",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Aufgabe3.1/client/script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lilli-Knecht/GIS-SoSe-2021.git"
+  },
+  "author": "Lilli Knecht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lilli-Knecht/GIS-SoSe-2021/issues"
+  },
+  "homepage": "https://github.com/Lilli-Knecht/GIS-SoSe-2021#readme"
+}
