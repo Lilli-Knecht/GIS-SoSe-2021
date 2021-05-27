@@ -1,6 +1,6 @@
 namespace Aufgabe3_1{
 
-    async function datenSenden(_url: RequestInfo): Promise<void> {
+    async function datenSenden(): Promise<void> {
         let daten: FormData = new FormData(document.forms[0]);
         console.log(": " + daten.get("name"));
         for (let entry of daten) {
@@ -10,11 +10,17 @@ namespace Aufgabe3_1{
         }
 
         let query: URLSearchParams = new URLSearchParams(<any>daten);
+        let _url: RequestInfo = "https://gisombsose2021.herokuapp.com/";
         _url = _url + "?" + query.toString();
         console.log(_url);
         let antwort: Response = await fetch(_url);
-        console.log(antwort);
+        let ausgabe: string = await antwort.text();
+        console.log(ausgabe);
+        let rueckgabe: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("serverausgabe"); //an meine Seite anheften 
+        rueckgabe.innerText = ausgabe;
            
     }
-    datenSenden("https://gisombsose2021.herokuapp.com/");
+
+    let button: HTMLButtonElement = <HTMLButtonElement> document.getElementById("button");
+    button.addEventListener("click", datenSenden);
 }
