@@ -1,4 +1,4 @@
-namespace Aufgabe3_1{
+namespace Aufgabe3_1 {
 
     async function datenSenden(): Promise<void> {
         let daten: FormData = new FormData(document.forms[0]);

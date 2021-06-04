@@ -4,9 +4,11 @@
   "description": "Hallo",
   "main": "index.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^15.12.0"
+  },
   "scripts": {
-    "start": "node Aufgabe3.1/server/serverscript.js"
+    "start": "node Aufgabe3.2/server/server.js"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,15 @@
+body{
+    width:800px;
+    margin:auto;
+    font-family: Arial, Helvetica, sans-serif;
+    color:black;
+}
+
+#buttonHTML{
+    background-color: lightblue;
+}
+
+#buttonJSON{
+    background-color: blue;
+}
+
