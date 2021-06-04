@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Aufgabe3_2 = void 0;
 const Http = require("http");
-const Url = require("url"); //?
+const Url = require("url");
 var Aufgabe3_2;
 (function (Aufgabe3_2) {
     console.log("Starting server"); //Konsolenausgabe
