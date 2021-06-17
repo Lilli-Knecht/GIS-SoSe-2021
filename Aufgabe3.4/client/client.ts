@@ -12,8 +12,8 @@ namespace Aufgabe3_4 { //hier Funktionen
         let query: URLSearchParams = new URLSearchParams(<any>daten);
         url = url + "?" + query.toString();
         let antwort: Response = await fetch(url);
-        let jsonObjekt: Eintrag = await antwort.json(); //JSON-Objekt generieren 
-        console.log(jsonObjekt); //json-String in der Konsole 
+        let ausgabe: string = await antwort.text(); //JSON-Objekt generieren 
+        console.log(ausgabe); //json-String in der Konsole 
     }
 
     let buttonAbschicken: HTMLButtonElement = <HTMLButtonElement> document.getElementById("abschicken");

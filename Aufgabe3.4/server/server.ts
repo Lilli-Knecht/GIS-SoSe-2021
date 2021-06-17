@@ -51,7 +51,8 @@ export namespace Aufgabe3_4 {
             else if (pfad == "/löschen") {
 
                 let id: string = <string>url.query.id; //hier nochmal wegen der id schauen
-                loeschen(urlDBLokal, id); //hier id übergeben, von Objekt, was gelöscht werden soll
+                let antwort: string = await loeschen(urlDBLokal, id); //hier id übergeben, von Objekt, was gelöscht werden soll
+                _response.write(antwort);
             }
         }
         _response.end(); //Antwort fertig und zurückschicken 
@@ -83,7 +84,7 @@ export namespace Aufgabe3_4 {
         return result;
     }
 
-    async function loeschen(_url: string, _idnummer: string): Promise<void> {
+    async function loeschen(_url: string, _idnummer: string): Promise<string> {
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
     
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
@@ -91,6 +92,7 @@ export namespace Aufgabe3_4 {
     
         let infos: Mongo.Collection = mongoClient.db("Aufgabe3_4").collection("Randominfos"); //Collection aufrufen
         infos.deleteOne({_id: _idnummer});
+        return "gelöscht";
 
     }
 
