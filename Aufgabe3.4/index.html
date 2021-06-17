@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="client/client.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Aufgabe 3.4</title>
+</head>
+<body>
+    <h2>Aufgabe 3.4</h2>
+    <h3>Formular:</h3>
+    <form>
+        
+        <label for="vorname">Vorname:</label>
+        <input type="text" id="vorname" name="vorname">
+
+        <label for="nachname">Nachname:</label>
+        <input type="text" id="nachname" name="nachname">
+
+        <label for="tier">Wunschhaustier:</label>
+        <input type="text" id="tier" name="wunschhaustier">
+
+        <p>Nun kannst du deine Daten abschicken und anzeigen lassen.</p>
+        <button type="button" id="abschicken" >Abschicken</button>
+        <button type="button" id="anzeigen" >Eingaben anzeigen</button>
+
+        <p>Hier kannst du Eingaben über ihre ID wieder löschen.</p>
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id">
+        <button type="button" id="loeschen">Daten löschen</button>
+        
+        <div id="serverausgabe"></div>
+        
+    </form>
+    
+</body>
+</html>
