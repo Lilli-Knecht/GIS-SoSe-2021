@@ -7,7 +7,7 @@ const Mongo = require("mongodb");
 var Aufgabe3_4;
 (function (Aufgabe3_4) {
     //let urlDBLokal: string = "mongodb://localhost:27017"; //lokal
-    let urlDB = "mongodb+srv://testuser:<password>@lilliknecht.8k6vl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    let urlDB = "mongodb+srv://testuser:test1707@lilliknecht.8k6vl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
     let port = Number(process.env.PORT); //Port ist "Hafen" 
     if (!port)
         port = 8100; //Port wird auf 8100 gesetzt (localhost:8100)
