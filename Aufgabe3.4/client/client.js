@@ -20,8 +20,8 @@ var Aufgabe3_4;
     let rueckgabe = document.getElementById("serverausgabe"); //an meine Seite anheften 
     async function datenAnzeigen() {
         let daten = new FormData(document.forms[0]); //Objekt FormData wird generiert
-        let url = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-        //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+        //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+        let url = "http://localhost:8100"; //zum lokal testen 
         url += "/anzeigen"; //Button HTML gedrückt und nun diesen Path mit /html nehmen 
         //nächste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
         //tslint:disable-next-line 
