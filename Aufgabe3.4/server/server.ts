@@ -26,7 +26,7 @@ export namespace Aufgabe3_4 {
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> { 
         console.log("Angekommen.");
 
-        _response.setHeader("content-type", "text/html; charset=utf-8"); //Eigenschaften; Typ:Html
+        _response.setHeader("content-type", "application/json"); //Eigenschaften; Typ:Html
         _response.setHeader("Access-Control-Allow-Origin", "*"); //Zugriffserlaubnis --> * alle dürfen zugreifen 
         
 
