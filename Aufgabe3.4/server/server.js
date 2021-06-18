@@ -25,7 +25,7 @@ var Aufgabe3_4;
         if (_request.url) {
             let url = Url.parse(_request.url, true); //umwandeln in assoziatives Array, um Daten später rauszulesen 
             let pfad = url.pathname; //pathname der Url in String speichern
-            let eintrag = { vorname: url.query.vorname + "", nachname: url.query.nachname + "", wunschhaustier: url.query.wunschhaustier + "" }; //"" damit es als String erkannt wird 
+            let eintrag = { name: url.query.name + "", alter: parseInt(url.query.alter + ""), tier: url.query.tier + "" }; //"" damit es als String erkannt wird 
             if (pfad == "/anzeigen") { //hier Pfad, dass Daten aus Datenbank ziehen und anzeigen 
                 let daten = await dbAuslesen(urlDB);
                 console.log(daten);

@@ -33,7 +33,7 @@ export namespace Aufgabe3_4 {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); //umwandeln in assoziatives Array, um Daten später rauszulesen 
             let pfad: string = <string>url.pathname; //pathname der Url in String speichern
-            let eintrag: Eintrag = {vorname: url.query.vorname + "", nachname: url.query.nachname + "", wunschhaustier: url.query.wunschhaustier + ""}; //"" damit es als String erkannt wird 
+            let eintrag: Eintrag = {name: url.query.name + "", alter: parseInt(url.query.alter + ""), tier: url.query.tier + ""}; //"" damit es als String erkannt wird 
 
             if (pfad == "/anzeigen") { //hier Pfad, dass Daten aus Datenbank ziehen und anzeigen 
         
@@ -80,9 +80,9 @@ export namespace Aufgabe3_4 {
     }
 
     interface Eintrag { //Hilfe für den Programmierer/uns
-        vorname: string;
-        nachname: string;
-        wunschhaustier: string;
+        name: string;
+        alter: number;
+        tier: string;
     }
 
     //Beispiel aus der Vorlesung
