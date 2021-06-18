@@ -5,7 +5,7 @@ import * as Mongo from "mongodb";
 export namespace Aufgabe3_4 { 
     
     //let urlDBLokal: string = "mongodb://localhost:27017"; //lokal
-    let urlDB: string = "mongodb+srv://testuser:test1707@lilliknecht.8k6vl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; 
+    let urlDB: string = "mongodb+srv://testuser:test1707@lilliknecht.8k6vl.mongodb.net/Aufgabe3_4?retryWrites=true&w=majority"; 
     let port: number = Number(process.env.PORT); //Port ist "Hafen" 
     if (!port)
         port = 8100; //Port wird auf 8100 gesetzt (localhost:8100)
