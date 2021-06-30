@@ -25,7 +25,7 @@ namespace Endabgabe {
         let daten: FormData = new FormData(document.forms[0]);
         let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
         //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/scoredatenAbgeschickt"; //Button abschicken gedrückt 
+        url += "/hinzufuegen"; //Button hinzufügen gedrückt 
         
         //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
         //tslint:disable-next-line 
@@ -44,7 +44,7 @@ namespace Endabgabe {
         let daten: FormData = new FormData(document.forms[0]);
         let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
         //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-        url += "/scoredatenAbgeschickt"; //Button abschicken gedrückt 
+        url += "/loeschen"; //Button löschen gedrückt 
         
         //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
         //tslint:disable-next-line 
