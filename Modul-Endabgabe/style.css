@@ -1,0 +1,35 @@
+body{
+    position:relative;
+    width:800px;
+    margin:auto;
+    background-color: lightgrey;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:black;
+}
+
+#nav1{
+    position: sticky;
+    top: 0;
+    padding: 5px;
+    z-index: 1;
+    display: flex;
+    flex-flow: row wrap;
+    margin:auto;
+}
+
+#navcontent{
+    background-color: turquoise;
+    padding: 5px;
+    height: min-content;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+}
+
+.unterseiten{
+    background-color: turquoise;
+    padding: 6px;
+    font-size: x-large;
+}

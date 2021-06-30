@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="nav1">
+        <div id="navcontent">
+            <a class="navigation" href="Startseite.html">Startseite</a>
+            <a class="navigation" href="Spiel.html">Play</a>
+            <a class="navigation" id="aktuell" href="Highscoreliste.html">Highscore</a>   
+        </div>  
+    </nav>
+
+    <main>
+        <form>
+            <p>Hier kannst du neue Bilder zum Memory hinzufügen:</p>
+            <label for="name">Bildname:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="url">Url:</label>
+            <input type="text" id="url" name="url">
+
+            <button type="button" id="hinzu" >Hinzufügen</button>
+
+        </form>
+        <form>
+            <p>Hier kannst du Bilder aus dem Memory löschen:</p>
+            <label for="name">Bildname:</label>
+            <input type="text" id="name" name="name">
+
+            <button type="button" id="loeschen" >Löschen</button>
+        </form>
+    </main>
+    
+</body>
+</html>
