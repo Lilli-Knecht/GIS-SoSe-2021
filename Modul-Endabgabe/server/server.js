@@ -29,7 +29,7 @@ var Endabgabe;
             let pfad = url.pathname; //pathname der Url in String speichern
             let score = { name: url.query.name + "", zeit: parseInt(url.query.alter + "") }; //"" damit es als String erkannt wird 
             let karte = { bildname: url.query.bildname + "", bildurl: url.query.bildurl + "" };
-            //let entfernen: string = url.query.bildname;
+            let entfernen = url.query.bildname;
             if (pfad == "/scoredatenAnzeigen") { //hier Pfad, dass Daten aus Datenbank angezeigt werden
                 let daten = await topZehn(urlDB);
                 console.log(daten);
@@ -47,8 +47,13 @@ var Endabgabe;
                 console.log(karten);
                 _response.write(JSON.stringify(karten)); //hier dann die Datenbank auslesen und als Antort zurückgeben
             }
-            else if (pfad == "loeschen") {
-                //hier dann bildkarteLoeschen aufrufen 
+            else if (pfad == "/loeschen") {
+                let karten = await loeschen(urlDB, entfernen); //hier dann loeschen aufrufen 
+                console.log(karten);
+                _response.write(JSON.stringify(karten)); //hier aktualisierte Daten aus der Datenbank als Antowrt zurückgeben 
+            }
+            else if (pfad == "/erstellen") {
+                //hier dann Memory erstellen 
             }
         }
         _response.end(); //Antwort fertig und zurückschicken 
@@ -79,13 +84,22 @@ var Endabgabe;
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         //hier Datenbank und Collections richtig auswählen !!!!
-        let infos = mongoClient.db("Memory").collection("Bildkarten"); //Collection aufrufen
+        let infos = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
         let cursor = infos.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
         let result = await cursor.toArray(); //hier komplette Daten aus der Datenbank 
         return result;
     }
-    async function bildLoeschen(_id) {
+    async function loeschen(_url, _name) {
         //hier dann Bildkarte löschen entweder über Bildname oder über id (id wäre eindeutiger)
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        //hier Datenbank und Collections richtig auswählen !!!!
+        let infos = mongoClient.db("Memory").collection("Bildkarten"); //Collection aufrufen
+        infos.deleteOne({ name: _name }); //löscht Bildkarte mit diesem Namen 
+        let cursor = infos.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
+        let result = await cursor.toArray();
+        return result;
     }
 })(Endabgabe = exports.Endabgabe || (exports.Endabgabe = {}));
 //# sourceMappingURL=server.js.map

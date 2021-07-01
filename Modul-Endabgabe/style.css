@@ -7,6 +7,33 @@ body{
     color:black;
 }
 
+h1{
+    display: flex;
+    justify-content: center;
+    transition: color 2s ease-in-out 0s;
+    color:black;
+    font-size: 7rem;
+    width: min-content;
+    margin:auto;
+}
+
+#willkommen {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+#unterseitennavigation{
+    display: flex;
+    justify-content: center;
+}
+
+.unterseiten{
+    background-color: turquoise;
+    padding: 6px;
+    font-size: x-large;
+}
+
 #nav1{
     position: sticky;
     top: 0;
@@ -28,8 +55,4 @@ a{
     text-decoration: none;
 }
 
-.unterseiten{
-    background-color: turquoise;
-    padding: 6px;
-    font-size: x-large;
-}
+
