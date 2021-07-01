@@ -10,8 +10,6 @@ body{
 h1{
     display: flex;
     justify-content: center;
-    transition: color 2s ease-in-out 0s;
-    color:black;
     font-size: 7rem;
     width: min-content;
     margin:auto;
@@ -26,12 +24,19 @@ h1{
 #unterseitennavigation{
     display: flex;
     justify-content: center;
+    padding: 5px;
 }
 
 .unterseiten{
     background-color: turquoise;
-    padding: 6px;
-    font-size: x-large;
+    padding: 10px;
+    font-size: 2rem;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.unterseiten:hover, .navigation:hover{
+    background-color: darkturquoise;
 }
 
 #nav1{
@@ -41,18 +46,43 @@ h1{
     z-index: 1;
     display: flex;
     flex-flow: row wrap;
-    margin:auto;
+    justify-content: flex-end;
 }
 
-#navcontent{
+.navigation{
     background-color: turquoise;
     padding: 5px;
     height: min-content;
-    color: black;
 }
 
 a{
     text-decoration: none;
 }
+
+#spielen{
+    background-color: turquoise;
+    font-size: large;
+}
+
+thead {
+    font-size: 2rem;
+    color:darkturquoise;
+}
+
+.Admin {
+    background-color: grey;
+    opacity: 30%;
+    padding: 5px;
+}
+
+.Admin::placeholder {
+    color:white;
+}
+
+#memorykarten {
+    font-size: larger;
+}
+
+
 
 
