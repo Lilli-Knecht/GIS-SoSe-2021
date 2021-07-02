@@ -17,8 +17,10 @@ namespace Endabgabe {
             url = url + "?" + query.toString(); //in String umwandeln 
             let antwort: Response = await fetch(url); //warten auf url
             let ausgabe: Memorykarte[] = await antwort.json(); //warten auf antwort 
+            console.log(ausgabe);
+            
 
-            for (let i: number = 0; i < 10; i++) { //10 Memorykarten generieren lassen
+            /*for (let i: number = 0; i < 10; i++) { //10 Memorykarten generieren lassen
                 let div: HTMLDivElement = bildkarte(ausgabe[Math.floor((Math.random() * (10 - 0 + 1)) + 0)]); //Quelle developer.mpzilla.org
                 let div2: HTMLDivElement = div; //hier für jede Karte zwei divs generieren 
                 div.classList.add("zugedeckt");
@@ -28,15 +30,16 @@ namespace Endabgabe {
                 document.body.appendChild(div);
                 document.body.appendChild(div2);
                 //hier noch eine zufällige Position der Divs machen!!!
-            }
+            }*/
+
         }
 
         let buttonPlay: HTMLButtonElement = <HTMLButtonElement> document.getElementById("spielen"); //Button machen auf DeinScore
         buttonPlay.addEventListener("click", erstellen);
 
-        function aufdecken(): void {
+        /*function aufdecken(): void {
             //hier div dann umdrehen 
-        }
+        }*/
 
     }
 
@@ -87,13 +90,8 @@ namespace Endabgabe {
             let query: URLSearchParams = new URLSearchParams(<any>daten);
             url = url + "?" + query.toString();
             let antwort: Response = await fetch(url);
-            let ausgabe: Memorykarte[] = await antwort.json(); 
+            let ausgabe: string = await antwort.text(); 
             console.log(ausgabe); 
-
-            for (let i: number = 0; i < ausgabe.length; i++) { //alle anzeigen 
-                let div: HTMLDivElement = bildkarteInfos(ausgabe[i]); 
-                document.body.appendChild(div);
-            }
     
         }
     
@@ -128,7 +126,7 @@ namespace Endabgabe {
             let daten: FormData = new FormData(document.forms[0]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/kartenAnzeigen"; //Button löschen gedrückt 
+            url += "/kartenAnzeigen"; //Button anzeigen gedrückt 
             
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
@@ -151,7 +149,7 @@ namespace Endabgabe {
 
     }
 
-    function bildkarte(_auswahl: Memorykarte): HTMLDivElement { //hier Anzeige der Bildkarten (nur Bild)
+    /*function bildkarte(_auswahl: Memorykarte): HTMLDivElement { //hier Anzeige der Bildkarten (nur Bild)
         let div: HTMLDivElement = document.createElement("div");
         div.classList.add("bildkarte");
 
@@ -160,7 +158,7 @@ namespace Endabgabe {
         div.appendChild(image);
 
         return div; 
-    }
+    }*/
 
     function bildkarteInfos(_karte: Memorykarte): HTMLDivElement { //hier Anzeige der Bildkarten mit Bildname 
         let karte: HTMLDivElement = document.createElement("div");
@@ -181,6 +179,11 @@ namespace Endabgabe {
         bildname: string;
         bildurl: string;
     }
+
+    /*interface Scoredaten {
+        name: string;
+        zeit: number;
+    }*/
 
 
 }

@@ -18,7 +18,7 @@ export namespace Endabgabe {
 
     function serverStarten(_port: number | string): void {
         let server: Http.Server = Http.createServer(); //erstellen eines einfachen Servers
-        console.log("Server gestartet");
+        console.log("Server gestartet!");
 
         server.listen(_port);
         server.addListener("request", handleRequest); 
@@ -41,7 +41,6 @@ export namespace Endabgabe {
             let entfernen: string | string[] = url.query.bildname;
 
             if (pfad == "/scoredatenAnzeigen") { //hier Pfad, dass Daten aus Datenbank angezeigt werden
-        
                 let daten: Scoredaten[] = await topZehn(urlDB);
                 console.log(daten);
                 //hier jetzt Daten durchgehen und dann nur die besten Zehn (Zeit) ausgeben
@@ -50,17 +49,16 @@ export namespace Endabgabe {
 
             }
             else if (pfad == "/scoredatenAbgeschickt") { //hier Pfad, dass ich Daten abgeschickt hab und nun in Datenbank speichern will
-                
                 let antwort: string = await scoredatenSpeichern(urlDB, score); 
                 console.log(antwort);
                 _response.write(antwort); //Anwort, die zurückkommt 
                   
             }
             else if (pfad == "/hinzufuegen") { //hier Pfad, dass man Bild hinzufügen will
-
-                let karten: Memorykarte[] = await hinzufuegenUndAnzeigen(urlDB, karte);
-                console.log(karten);
-                _response.write(JSON.stringify(karten)); //hier dann die Datenbank auslesen und als Antort zurückgeben
+                let antwort: string = await hinzufuegen(urlDB, karte);
+                console.log(antwort);
+                _response.write(antwort); //hier dann die Datenbank auslesen und als Antort zurückgeben
+                
             }
             else if (pfad == "/loeschen") {
                 let karten: Memorykarte[] = await loeschen(urlDB, entfernen); //hier dann loeschen aufrufen 
@@ -110,7 +108,7 @@ export namespace Endabgabe {
         return antwort;
     }
 
-    async function hinzufuegenUndAnzeigen(_url: string, _karte: Memorykarte): Promise<Memorykarte[]> {
+    async function hinzufuegen(_url: string, _karte: Memorykarte): Promise<string> {
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
     
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
@@ -120,9 +118,7 @@ export namespace Endabgabe {
         let infos: Mongo.Collection = mongoClient.db("Memory").collection("Bildkarten"); //Collection aufrufen
         infos.insertOne(_karte); //Daten in die Datenbank speichern 
         
-        let cursor: Mongo.Cursor = infos.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
-        let result: Memorykarte[] = await cursor.toArray(); //hier komplette Daten aus der Datenbank 
-        return result;
+        return "Hinzugefügt";
     }
 
     async function topZehn(_url: string): Promise<Scoredaten[]> {

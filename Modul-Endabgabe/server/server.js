@@ -15,7 +15,7 @@ var Endabgabe;
     serverStarten(port); //Server auf diesem Port starten
     function serverStarten(_port) {
         let server = Http.createServer(); //erstellen eines einfachen Servers
-        console.log("Server gestartet");
+        console.log("Server gestartet!");
         server.listen(_port);
         server.addListener("request", handleRequest);
     }
@@ -43,9 +43,9 @@ var Endabgabe;
                 _response.write(antwort); //Anwort, die zurückkommt 
             }
             else if (pfad == "/hinzufuegen") { //hier Pfad, dass man Bild hinzufügen will
-                let karten = await hinzufuegenUndAnzeigen(urlDB, karte);
-                console.log(karten);
-                _response.write(JSON.stringify(karten)); //hier dann die Datenbank auslesen und als Antort zurückgeben
+                let antwort = await hinzufuegen(urlDB, karte);
+                console.log(antwort);
+                _response.write(antwort); //hier dann die Datenbank auslesen und als Antort zurückgeben
             }
             else if (pfad == "/loeschen") {
                 let karten = await loeschen(urlDB, entfernen); //hier dann loeschen aufrufen 
@@ -84,16 +84,14 @@ var Endabgabe;
         let antwort = "Eingetragen";
         return antwort;
     }
-    async function hinzufuegenUndAnzeigen(_url, _karte) {
+    async function hinzufuegen(_url, _karte) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         //hier Datenbank und Collections richtig auswählen !!!!
         let infos = mongoClient.db("Memory").collection("Bildkarten"); //Collection aufrufen
         infos.insertOne(_karte); //Daten in die Datenbank speichern 
-        let cursor = infos.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
-        let result = await cursor.toArray(); //hier komplette Daten aus der Datenbank 
-        return result;
+        return "Hinzugefügt";
     }
     async function topZehn(_url) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
