@@ -9,10 +9,11 @@
 </head>
 <body>
     <nav id="nav1">
+        <img id="menü" src="Beispieldaten/Menü-Icon.png" alt="Seitenmenu">
         <div id="navcontent">
             <a class="navigation" href="Startseite.html">Startseite</a>
-            <a class="navigation" href="Spiel.html">Play</a>
-            <a class="navigation" id="aktuell" href="Highscoreliste.html">Highscore</a>   
+            <a class="navigation" href="Spiel.html">Game</a>
+            <a class="navigation" href="Highscoreliste.html">Highscore</a>   
         </div>  
     </nav>
 
@@ -32,7 +33,9 @@
             <button type="button" id="loeschen" >Löschen</button>
         </form>
 
-        <p id="memorykarten">Diese Bilder sind alle im Memory enthalten:</p>
+        <p id="memorykarten">Drücke Anzeigen, um alle Bilder, die sich aktuell in der Datenbank befinden, anzuzeigen.</p>
+        <button type="button" id="anzeigen">Anzeigen</button>
+        <div id="bildanzeige"></div>
     </main>
     
 </body>

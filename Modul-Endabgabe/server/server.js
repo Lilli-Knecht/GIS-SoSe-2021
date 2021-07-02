@@ -6,7 +6,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Endabgabe;
 (function (Endabgabe) {
-    //let urlDBLokal: string = "mongodb://localhost:27017"; //lokal
+    //let urlDB: string = "mongodb://localhost:27017"; //lokal
     let urlDB = "mongodb+srv://testuser:test1707@lilliknecht.8k6vl.mongodb.net/Memory?retryWrites=true&w=majority";
     //hier nochmal neu bei MongoDB Link und Datendank und collections  anlegen 
     let port = Number(process.env.PORT); //Port ist "Hafen" 
@@ -52,11 +52,27 @@ var Endabgabe;
                 console.log(karten);
                 _response.write(JSON.stringify(karten)); //hier aktualisierte Daten aus der Datenbank als Antowrt zurückgeben 
             }
-            else if (pfad == "/erstellen") {
-                //hier dann Memory erstellen 
+            else if (pfad == "/spielen") { //erstmal alle Bilder aus DAtenbank ausgeben und dann auswählen und anordnen (in der script.ts)
+                let spielkarten = await memoryAnzeigen(urlDB);
+                console.log(spielkarten);
+                _response.write(JSON.stringify(spielkarten)); //Bildkarten zurückgeben 
+            }
+            else if (pfad == "/kartenAnzeigen") {
+                let anzeige = await memoryAnzeigen(urlDB);
+                console.log(anzeige);
+                _response.write(JSON.stringify(anzeige));
             }
         }
         _response.end(); //Antwort fertig und zurückschicken 
+    }
+    async function memoryAnzeigen(_url) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        let infos = mongoClient.db("Memory").collection("Bildkarten"); //Collection aufrufen
+        let cursor = infos.find();
+        let spielkarten = await cursor.toArray();
+        return spielkarten;
     }
     async function scoredatenSpeichern(_url, _scoredaten) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };

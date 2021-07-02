@@ -4,7 +4,7 @@ import * as Mongo from "mongodb";
 
 export namespace Endabgabe {
 
-    //let urlDBLokal: string = "mongodb://localhost:27017"; //lokal
+    //let urlDB: string = "mongodb://localhost:27017"; //lokal
     let urlDB: string = "mongodb+srv://testuser:test1707@lilliknecht.8k6vl.mongodb.net/Memory?retryWrites=true&w=majority"; 
     //hier nochmal neu bei MongoDB Link und Datendank und collections  anlegen 
     
@@ -68,13 +68,34 @@ export namespace Endabgabe {
                 _response.write(JSON.stringify(karten)); //hier aktualisierte Daten aus der Datenbank als Antowrt zurückgeben 
                 
             }
-            else if (pfad == "/erstellen") {
-                //hier dann Memory erstellen 
+            else if (pfad == "/spielen") { //erstmal alle Bilder aus DAtenbank ausgeben und dann auswählen und anordnen (in der script.ts)
+                let spielkarten: Memorykarte[] = await memoryAnzeigen(urlDB);
+                console.log(spielkarten);
+                _response.write(JSON.stringify(spielkarten)); //Bildkarten zurückgeben 
+
+            }
+            else if (pfad == "/kartenAnzeigen") {
+                let anzeige: Memorykarte[] = await memoryAnzeigen(urlDB);
+                console.log(anzeige);
+                _response.write(JSON.stringify(anzeige));
+                
             }
         }
         _response.end(); //Antwort fertig und zurückschicken 
     }
 
+    async function memoryAnzeigen(_url: string): Promise <Memorykarte[]> {
+        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+    
+        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+    
+        let infos: Mongo.Collection = mongoClient.db("Memory").collection("Bildkarten"); //Collection aufrufen
+        
+        let cursor: Mongo.Cursor = infos.find(); 
+        let spielkarten: Memorykarte[] = await cursor.toArray();
+        return spielkarten;
+    }
 
     async function scoredatenSpeichern(_url: string, _scoredaten: Scoredaten): Promise<string> {
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
