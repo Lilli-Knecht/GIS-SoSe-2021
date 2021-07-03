@@ -37,7 +37,7 @@ var Endabgabe;
             return karte;
         }
         async function bildHinzu() {
-            let daten = new FormData(document.forms[0]);
+            let daten = new FormData(document.forms[1]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             let url = "http://localhost:8100"; //zum lokal testen 
             url += "/hinzufuegen"; //Button hinzufügen gedrückt 
@@ -52,7 +52,7 @@ var Endabgabe;
         let buttonHinzu = document.getElementById("hinzufuegen"); //Button machen auf Admin
         buttonHinzu.addEventListener("click", bildHinzu);
         async function bildLoeschen() {
-            let daten = new FormData(document.forms[0]);
+            let daten = new FormData(document.forms[2]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             let url = "http://localhost:8100"; //zum lokal testen 
             url += "/loeschen"; //Button löschen gedrückt 

@@ -49,7 +49,7 @@ namespace Endabgabe {
 
 
         async function bildHinzu(): Promise<void> { //Name und URL eingeben und abschicken 
-            let daten: FormData = new FormData(document.forms[0]);
+            let daten: FormData = new FormData(document.forms[1]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/hinzufuegen"; //Button hinzufügen gedrückt 
@@ -68,7 +68,7 @@ namespace Endabgabe {
         buttonHinzu.addEventListener("click", bildHinzu);
 
         async function bildLoeschen(): Promise<void> { //Name oder ID eingeben und abschicken 
-            let daten: FormData = new FormData(document.forms[0]);
+            let daten: FormData = new FormData(document.forms[2]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/loeschen"; //Button löschen gedrückt 
