@@ -117,9 +117,13 @@ input {
 
 td {
     justify-content: center;
+    background-color: darkgrey;
+    width: 150px;
+    height: 120px;
 }
 
 .karte {
+    justify-content: center;
     width: 150px;
     height: 120px;
 }
@@ -132,33 +136,6 @@ td {
     .unterseiten {
         font-size: 3.5rem;
         padding: 20px;
-    }
-    
-    #nav1 {
-        justify-content: center;
-    }
-
-    .karte {
-        width: 100px;
-        height: 80px;
-    }
-}
-
-@media screen and (max-width: 599px) {
-    body {
-        width: 100%;
-    }
-
-    h1 {
-        font-size: 5rem;
-    }
-    
-    #willkommen {
-        font-size: 1rem;
-    }
-
-    .unterseiten {
-        font-size: 2rem;
     }
 
     #menü {
@@ -184,6 +161,25 @@ td {
 
     #nav1:hover #navcontent{
         display: inline-flex;
+    }
+
+}
+
+@media screen and (max-width: 599px) {
+    body {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 5rem;
+    }
+    
+    #willkommen {
+        font-size: 1rem;
+    }
+
+    .unterseiten {
+        font-size: 2rem;
     }
 
     table {

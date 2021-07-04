@@ -43,6 +43,11 @@ var Endabgabe;
                 console.log(antwort);
                 _response.write(antwort); //hier aktualisierte Daten aus der Datenbank als Antowrt zurückgeben 
             }
+            else if (pfad == "/spielen") { //erstmal alle Bilder aus Datenbank ausgeben und dann auswählen und anordnen (in der script.ts)
+                let spielkarten = await memoryAnzeigen(urlDB);
+                //console.log(spielkarten);
+                _response.write(JSON.stringify(spielkarten)); //alle Bildkarten zurückgeben 
+            }
         }
         _response.end(); //Antwort fertig und zurückschicken 
     }
