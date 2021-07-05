@@ -28,7 +28,7 @@ var Endabgabe;
             let pfad = url.pathname; //pathname der Url in String speichern
             let karte = { bildname: url.query.bildname + "", bildurl: url.query.bildurl + "" }; //"" damit es als String erkannt wird 
             let entfernen = url.query.bildname + "";
-            let score = { name: url.query.name + "", zeit: url.query.zeit + "" };
+            let score = { name: url.query.name + "", zeit: parseInt(url.query.zeit + "") };
             if (pfad == "/kartenAnzeigen") {
                 let anzeige = await memoryAnzeigen(urlDB);
                 //console.log(anzeige);

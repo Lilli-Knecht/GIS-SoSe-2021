@@ -92,6 +92,12 @@ namespace Endabgabe {
     //Spiel.html
     if ((document.querySelector("title").getAttribute("id") == "Spiel" )) { //hier dann erstellen des Memorys mit den Daten aus der Datenbank
         
+        let count: number = 0; //Counter zum Zählen der richtigen Pärchen 
+
+        if (count == 10) { //alle 10 Pärchen gefunden 
+            //Spiel beenden und Zeit stoppen und auf DeinScore weiterleiten 
+        }
+
         async function erstellen(): Promise<void> {
             let daten: FormData = new FormData(document.forms[0]); //Objekt FormData wird generiert
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
@@ -116,18 +122,41 @@ namespace Endabgabe {
                 spielkarten.push(karteEins); //hier in das spielkartenarray eintragen, um später damit weiterzuarbeiten 
                 spielkarten.push(karteZwei);
 
-                ausgabe = ausgabe.splice(auswahl, 1); //benutztes Bild aus dem Array entfernen, um Doppelungen zu verhindern 
+                ausgabe.splice(auswahl, 1); //benutztes Bild aus dem Array entfernen, um Doppelungen zu verhindern 
                 //Quelle: https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
 
             }
+            console.log(spielkarten); //nur Überprüfung 
+            
 
             //jetzt dann Karten aus spielkartenarray zufällig positionieren 
             position(spielkarten);
+
+            //jetzt noch Zeit messen --> Anfangszeit 
+
 
         }
 
         let buttonPlay: HTMLButtonElement = <HTMLButtonElement> document.getElementById("spielen"); //Button machen auf DeinScore
         buttonPlay.addEventListener("click", erstellen);
+
+
+        //hier dann noch aufdecken und überprüfen 
+        //ich muss hier die Karte übergeben, aber wie bei einem eventlistener?
+        /*function aufdecken(): void {
+            //hier karte dann aufdecken --> style.display ändern 
+            let karte: HTMLImageElement;
+            let karteZwei: HTMLImageElement;
+            //dann URL vergleichen 
+            if (karte.src == karteZwei.src) {
+                karte.hidden = false;
+                karteZwei.hidden = false;
+
+                count += 1; //Counter hochzählen 
+            }
+
+
+        }*/
 
         let spielPosition: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; //id der Tabellenplätze 
 
@@ -136,11 +165,11 @@ namespace Endabgabe {
                 let positionierung: number = Math.floor((Math.random() * ((spielPosition.length - 1) - 0 + 1)) + 0); //Zahl zwischen 0 und 19 (bzw. 19 zählt runter) 
                 let karte: HTMLImageElement = bildkarte(_spielkarten[positionierung]);
 
-                let platz: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById(positionierung.toString());
+                let platz: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById(positionierung.toString()); //hier Tabellenzelle mit zufälliger Position "holen"
                 platz.appendChild(karte); //karte in das Feld mit der zufällig generierten Position speichern 
 
-                spielPosition = spielPosition.splice(positionierung, 1); //benutzte Position aus dem Array entfernen, um Überschreibung zu verhindern 
-                _spielkarten = _spielkarten.splice(positionierung, 1); //verwendetes Bild rausnehmen 
+                spielPosition.splice(positionierung, 1); //benutzte Position/Tabellenzelle aus dem Array entfernen, um Überschreibung zu verhindern 
+                _spielkarten.splice(positionierung, 1); //verwendetes Bild rausnehmen 
             }
         } //warum macht er das ganze nur einmal?
 
@@ -149,6 +178,8 @@ namespace Endabgabe {
         let image: HTMLImageElement = document.createElement("img");
         image.classList.add("karte");
         image.src = _auswahl.bildurl;
+        //image.addEventListener("click", aufdecken); //jeder Karte den Listener geben 
+        //image.style.display = "none"; //Karte noch verstecken 
 
         return image; 
         }
@@ -211,7 +242,7 @@ namespace Endabgabe {
                 div.appendChild(name);
 
                 let zeit: HTMLSpanElement = <HTMLSpanElement> document.createElement("span");
-                zeit.innerText = ausgabe[i].zeit;
+                zeit.innerText = ausgabe[i].zeit + "";
                 div.appendChild(zeit);
 
                 zeile.appendChild(div);
@@ -253,7 +284,7 @@ namespace Endabgabe {
 
     interface Scoredaten {
         name: string;
-        zeit: string;
+        zeit: number;
     }
 
 

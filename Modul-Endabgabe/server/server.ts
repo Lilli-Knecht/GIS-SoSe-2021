@@ -35,7 +35,7 @@ export namespace Endabgabe {
             let pfad: string = <string>url.pathname; //pathname der Url in String speichern
             let karte: Memorykarte = {bildname: url.query.bildname + "", bildurl: url.query.bildurl + ""}; //"" damit es als String erkannt wird 
             let entfernen: string | string[] = url.query.bildname + "";
-            let score: Scoredaten = {name: url.query.name + "", zeit: url.query.zeit + ""};
+            let score: Scoredaten = {name: url.query.name + "", zeit: parseInt(url.query.zeit + "")};
 
             if (pfad == "/kartenAnzeigen") {
                 let anzeige: Memorykarte[] = await memoryAnzeigen(urlDB);
@@ -160,7 +160,7 @@ export namespace Endabgabe {
 
     interface Scoredaten {
         name: string;
-        zeit: string;
+        zeit: number;
     }
 
 
