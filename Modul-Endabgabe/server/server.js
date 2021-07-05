@@ -28,9 +28,10 @@ var Endabgabe;
             let pfad = url.pathname; //pathname der Url in String speichern
             let karte = { bildname: url.query.bildname + "", bildurl: url.query.bildurl + "" }; //"" damit es als String erkannt wird 
             let entfernen = url.query.bildname + "";
+            let score = { name: url.query.name + "", zeit: url.query.zeit + "" };
             if (pfad == "/kartenAnzeigen") {
                 let anzeige = await memoryAnzeigen(urlDB);
-                console.log(anzeige);
+                //console.log(anzeige);
                 _response.write(JSON.stringify(anzeige));
             }
             else if (pfad == "/hinzufuegen") { //hier Pfad, dass man Bild hinzufügen will
@@ -47,6 +48,16 @@ var Endabgabe;
                 let spielkarten = await memoryAnzeigen(urlDB);
                 //console.log(spielkarten);
                 _response.write(JSON.stringify(spielkarten)); //alle Bildkarten zurückgeben 
+            }
+            else if (pfad == "/scoredatenAbgeschickt") { //hier Pfad, dass ich Daten abgeschickt hab und nun in Datenbank speichern will
+                let antwort = await scoredatenSpeichern(urlDB, score);
+                console.log(antwort);
+                _response.write(antwort); //Anwort, die zurückkommt 
+            }
+            else if (pfad == "/scoredatenAnzeigen") { //hier Pfad, dass Daten aus Datenbank angezeigt werden
+                let daten = await scoredaten(urlDB);
+                //console.log(daten);
+                _response.write(JSON.stringify(daten)); //hier dann die Datenbank auslesen und als Antort zurückgeben
             }
         }
         _response.end(); //Antwort fertig und zurückschicken 
@@ -78,6 +89,24 @@ var Endabgabe;
         let bildkarten = mongoClient.db("Memory").collection("Bildkarten"); //Collection aufrufen
         bildkarten.deleteOne({ bildname: _name }); //löscht Bildkarte mit diesem Namen 
         return "gelöscht";
+    }
+    async function scoredatenSpeichern(_url, _scoredaten) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        let infos = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
+        infos.insertOne(_scoredaten); //Daten in die Datenbank speichern 
+        let antwort = "Eingetragen";
+        return antwort;
+    }
+    async function scoredaten(_url) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        let infos = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
+        let cursor = infos.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
+        let result = await cursor.toArray(); //hier komplette Daten aus der Datenbank 
+        return result;
     }
 })(Endabgabe = exports.Endabgabe || (exports.Endabgabe = {}));
 //# sourceMappingURL=server.js.map

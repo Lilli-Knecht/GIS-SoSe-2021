@@ -35,10 +35,11 @@ export namespace Endabgabe {
             let pfad: string = <string>url.pathname; //pathname der Url in String speichern
             let karte: Memorykarte = {bildname: url.query.bildname + "", bildurl: url.query.bildurl + ""}; //"" damit es als String erkannt wird 
             let entfernen: string | string[] = url.query.bildname + "";
+            let score: Scoredaten = {name: url.query.name + "", zeit: url.query.zeit + ""};
 
             if (pfad == "/kartenAnzeigen") {
                 let anzeige: Memorykarte[] = await memoryAnzeigen(urlDB);
-                console.log(anzeige);
+                //console.log(anzeige);
                 _response.write(JSON.stringify(anzeige));
                 
             }
@@ -60,6 +61,20 @@ export namespace Endabgabe {
                 _response.write(JSON.stringify(spielkarten)); //alle Bildkarten zurückgeben 
 
             }
+            else if (pfad == "/scoredatenAbgeschickt") { //hier Pfad, dass ich Daten abgeschickt hab und nun in Datenbank speichern will
+                let antwort: string = await scoredatenSpeichern(urlDB, score); 
+                console.log(antwort);
+                _response.write(antwort); //Anwort, die zurückkommt 
+                  
+            }
+            else if (pfad == "/scoredatenAnzeigen") { //hier Pfad, dass Daten aus Datenbank angezeigt werden
+                let daten: Scoredaten[] = await scoredaten(urlDB);
+                //console.log(daten);
+                _response.write(JSON.stringify(daten)); //hier dann die Datenbank auslesen und als Antort zurückgeben
+
+            }
+
+
 
 
         }
@@ -110,12 +125,44 @@ export namespace Endabgabe {
         return "gelöscht";
     }
 
+    async function scoredatenSpeichern(_url: string, _scoredaten: Scoredaten): Promise<string> {
+        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+    
+        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+    
+        let infos: Mongo.Collection = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
+        infos.insertOne(_scoredaten); //Daten in die Datenbank speichern 
+        let antwort: string = "Eingetragen";
+        return antwort;
+    }
+
+    async function scoredaten(_url: string): Promise<Scoredaten[]> {
+        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+    
+        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+    
+        let infos: Mongo.Collection = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
+        let cursor: Mongo.Cursor = infos.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
+        let result: Scoredaten[] = await cursor.toArray(); //hier komplette Daten aus der Datenbank 
+        return result;
+    }
+
+
+
 
 
     interface Memorykarte {
         bildname: string;
         bildurl: string;
     }
+
+    interface Scoredaten {
+        name: string;
+        zeit: string;
+    }
+
 
 
 
