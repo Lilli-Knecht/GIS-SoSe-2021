@@ -75,8 +75,6 @@ export namespace Endabgabe {
             }
 
 
-
-
         }
         _response.end(); //Antwort fertig und zurückschicken 
 
