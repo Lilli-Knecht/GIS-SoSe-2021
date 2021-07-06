@@ -96,7 +96,7 @@ var Endabgabe;
         await mongoClient.connect();
         let infos = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
         infos.insertOne(_scoredaten); //Daten in die Datenbank speichern 
-        let antwort = "Eingetragen";
+        let antwort = "Deine Daten wurden eingetragen";
         return antwort;
     }
     async function scoredaten(_url) {

@@ -67,9 +67,7 @@ var Endabgabe;
     //Spiel.html
     if ((document.querySelector("title").getAttribute("id") == "Spiel")) { //hier dann erstellen des Memorys mit den Daten aus der Datenbank
         let count = 0; //Counter zum Zählen der richtigen Pärchen 
-        if (count == 10) { //alle 10 Pärchen gefunden 
-            //Spiel beenden und Zeit stoppen und auf DeinScore weiterleiten 
-        }
+        let date = new Date();
         async function erstellen() {
             let daten = new FormData(document.forms[0]); //Objekt FormData wird generiert
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
@@ -96,47 +94,83 @@ var Endabgabe;
             //jetzt dann Karten aus spielkartenarray zufällig positionieren 
             position(spielkarten);
             //jetzt noch Zeit messen --> Anfangszeit 
+            let spielbeginn = date.getTime(); //getTime in millisekunden 
+            sessionStorage.setItem("beginn", spielbeginn.toString());
         }
         let buttonPlay = document.getElementById("spielen"); //Button machen auf DeinScore
         buttonPlay.addEventListener("click", erstellen);
-        //hier dann noch aufdecken und überprüfen 
-        //ich muss hier die Karte übergeben, aber wie bei einem eventlistener?
-        /*function aufdecken(): void {
-            //hier karte dann aufdecken --> style.display ändern
-            let karte: HTMLImageElement;
-            let karteZwei: HTMLImageElement;
-            //dann URL vergleichen
-            if (karte.src == karteZwei.src) {
-                karte.hidden = false;
-                karteZwei.hidden = false;
-
-                count += 1; //Counter hochzählen
+        let aufgedeckteKarten = [];
+        function aufdecken(_event) {
+            let aufgedeckt = _event.target;
+            aufgedeckteKarten.push(aufgedeckt);
+            aufgedeckt.style.opacity = "100"; //Bild dann anzeigen
+            if (aufgedeckteKarten.length == 2) {
+                if (aufgedeckteKarten[0].src == aufgedeckteKarten[1].src) {
+                    aufgedeckteKarten = []; //Array wieder leeren 
+                    count += 1;
+                    if (count == 10) { //alle 10 Pärchen gefunden 
+                        //Spiel beenden und Zeit stoppen und auf DeinScore weiterleiten 
+                        let spielende = date.getTime();
+                        sessionStorage.setItem("ende", spielende.toString());
+                        let spielzeit = (parseInt(sessionStorage.getItem("ende")) - parseInt(sessionStorage.getItem("beginn"))) / 60; //durch 60 teilen --> Sekunden 
+                        sessionStorage.setItem("dauer", spielzeit.toString());
+                        count = 0; //Counter wieder auf null setzen 
+                        window.location.href = "DeinScore.html"; //Weiterleitung auf DeinScore
+                        // bzw. richtige https-Adresse 
+                        //Quelle: https://www.w3schools.com/js/js_window_location.asp
+                    }
+                }
+                else {
+                    //hier Zeitverzögerung 
+                    //zudecken(aufgedeckteKarten);
+                    setTimeout(warten, 2000);
+                    //Quelle: https://www.w3schools.com/js/js_timing.asp
+                }
             }
-
-
-        }*/
+            else if (aufgedeckteKarten.length > 2) {
+                zudecken(aufgedeckteKarten);
+            }
+        }
+        function warten() {
+            zudecken(aufgedeckteKarten);
+        }
+        function zudecken(_aufgedeckt) {
+            for (let i = 0; i < _aufgedeckt.length; i++) {
+                _aufgedeckt[i].style.opacity = "0";
+            }
+            aufgedeckteKarten = []; //Array wieder leeren 
+        }
         let spielPosition = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; //id der Tabellenplätze 
         function position(_spielkarten) {
+            _spielkarten.sort(() => .5 - Math.random()); //sortiert das Array zufällig um 
+            //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
             for (let i = 0; i < 20; i++) { //20 mal machen, um alle Karten zu positionieren 
-                let positionierung = Math.floor((Math.random() * ((spielPosition.length - 1) - 0 + 1)) + 0); //Zahl zwischen 0 und 19 (bzw. 19 zählt runter) 
-                let karte = bildkarte(_spielkarten[positionierung]);
-                let platz = document.getElementById(positionierung.toString()); //hier Tabellenzelle mit zufälliger Position "holen"
+                let karte = bildkarte(_spielkarten[i]);
+                let platz = document.getElementById(spielPosition[i].toString()); //hier Tabellenzelle mit zufälliger Position "holen"
                 platz.appendChild(karte); //karte in das Feld mit der zufällig generierten Position speichern 
-                spielPosition.splice(positionierung, 1); //benutzte Position/Tabellenzelle aus dem Array entfernen, um Überschreibung zu verhindern 
-                _spielkarten.splice(positionierung, 1); //verwendetes Bild rausnehmen 
+                //eigener Versuch die Bilder zufällig anzuordnen, aber wurde doch nur sortiert zurückgegeben, deshalb dann die .sort in Zeile 175
+                /*let positionierung: number = Math.floor((Math.random() * ((spielPosition.length - 1) - 0)) + 0); //Zahl zwischen 0 und 19 (bzw. 19 zählt runter)
+                let karte: HTMLImageElement = bildkarte(_spielkarten[positionierung]);
+
+                let platz: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById(spielPosition[positionierung].toString()); //hier Tabellenzelle mit zufälliger Position "holen"
+                platz.appendChild(karte); //karte in das Feld mit der zufällig generierten Position speichern
+
+                spielPosition.splice(positionierung, 1); //benutzte Position/Tabellenzelle aus dem Array entfernen, um Überschreibung zu verhindern
+                _spielkarten.splice(positionierung, 1); //verwendetes Bild rausnehmen */
             }
-        } //warum macht er das ganze nur einmal?
+        }
         function bildkarte(_auswahl) {
             let image = document.createElement("img");
             image.classList.add("karte");
             image.src = _auswahl.bildurl;
-            //image.addEventListener("click", aufdecken); //jeder Karte den Listener geben 
-            //image.style.display = "none"; //Karte noch verstecken 
+            image.addEventListener("click", aufdecken); //jeder Karte den Listener geben bzw. jeder Tabellenzelle?
+            image.style.opacity = "0"; //Karte noch verstecken 
             return image;
         }
     }
     //DeinScore.html
     else if ((document.querySelector("title").getAttribute("id") == "DeinScore")) {
+        let serverAntwort = document.getElementById("serverantwort");
         async function datenEingeben() {
             let daten = new FormData(document.forms[0]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
@@ -149,7 +183,11 @@ var Endabgabe;
             let antwort = await fetch(url);
             let ausgabe = await antwort.text();
             console.log(ausgabe);
+            serverAntwort.innerText = ausgabe;
         }
+        let zeit = sessionStorage.getItem("dauer");
+        let scoreZeit = document.getElementById("zeit");
+        scoreZeit.innerText = zeit; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
         let buttonScoredaten = document.getElementById("bestaetigen"); //Button machen auf DeinScore
         buttonScoredaten.addEventListener("click", datenEingeben);
     }

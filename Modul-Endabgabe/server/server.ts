@@ -131,7 +131,7 @@ export namespace Endabgabe {
     
         let infos: Mongo.Collection = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
         infos.insertOne(_scoredaten); //Daten in die Datenbank speichern 
-        let antwort: string = "Eingetragen";
+        let antwort: string = "Deine Daten wurden eingetragen";
         return antwort;
     }
 
