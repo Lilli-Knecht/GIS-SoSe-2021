@@ -67,7 +67,6 @@ var Endabgabe;
     //Spiel.html
     if ((document.querySelector("title").getAttribute("id") == "Spiel")) { //hier dann erstellen des Memorys mit den Daten aus der Datenbank
         let count = 0; //Counter zum Zählen der richtigen Pärchen 
-        let date = new Date();
         async function erstellen() {
             let daten = new FormData(document.forms[0]); //Objekt FormData wird generiert
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
@@ -92,61 +91,28 @@ var Endabgabe;
             }
             console.log(spielkarten); //nur Überprüfung 
             //jetzt dann Karten aus spielkartenarray zufällig positionieren 
+            rückseitenEinblenden();
             position(spielkarten);
             //jetzt noch Zeit messen --> Anfangszeit 
+            let date = new Date();
             let spielbeginn = date.getTime(); //getTime in millisekunden 
             sessionStorage.setItem("beginn", spielbeginn.toString());
+            console.log(spielbeginn);
         }
         let buttonPlay = document.getElementById("spielen"); //Button machen auf DeinScore
         buttonPlay.addEventListener("click", erstellen);
-        let aufgedeckteKarten = [];
-        function aufdecken(_event) {
-            let aufgedeckt = _event.target;
-            aufgedeckteKarten.push(aufgedeckt);
-            aufgedeckt.style.opacity = "100"; //Bild dann anzeigen
-            if (aufgedeckteKarten.length == 2) {
-                if (aufgedeckteKarten[0].src == aufgedeckteKarten[1].src) {
-                    aufgedeckteKarten = []; //Array wieder leeren 
-                    count += 1;
-                    if (count == 10) { //alle 10 Pärchen gefunden 
-                        //Spiel beenden und Zeit stoppen und auf DeinScore weiterleiten 
-                        let spielende = date.getTime();
-                        sessionStorage.setItem("ende", spielende.toString());
-                        let spielzeit = (parseInt(sessionStorage.getItem("ende")) - parseInt(sessionStorage.getItem("beginn"))) / 60; //durch 60 teilen --> Sekunden 
-                        sessionStorage.setItem("dauer", spielzeit.toString());
-                        count = 0; //Counter wieder auf null setzen 
-                        window.location.href = "DeinScore.html"; //Weiterleitung auf DeinScore
-                        // bzw. richtige https-Adresse 
-                        //Quelle: https://www.w3schools.com/js/js_window_location.asp
-                    }
-                }
-                else {
-                    //hier Zeitverzögerung 
-                    //zudecken(aufgedeckteKarten);
-                    setTimeout(warten, 2000);
-                    //Quelle: https://www.w3schools.com/js/js_timing.asp
-                }
-            }
-            else if (aufgedeckteKarten.length > 2) {
-                zudecken(aufgedeckteKarten);
+        function rückseitenEinblenden() {
+            for (let i = 1; i < 21; i++) {
+                let rückseite = document.getElementById(i + "");
+                rückseite.style.opacity = "100";
             }
         }
-        function warten() {
-            zudecken(aufgedeckteKarten);
-        }
-        function zudecken(_aufgedeckt) {
-            for (let i = 0; i < _aufgedeckt.length; i++) {
-                _aufgedeckt[i].style.opacity = "0";
-            }
-            aufgedeckteKarten = []; //Array wieder leeren 
-        }
-        let spielPosition = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; //id der Tabellenplätze 
         function position(_spielkarten) {
             _spielkarten.sort(() => .5 - Math.random()); //sortiert das Array zufällig um 
             //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
             for (let i = 0; i < 20; i++) { //20 mal machen, um alle Karten zu positionieren 
                 let karte = bildkarte(_spielkarten[i]);
-                let platz = document.getElementById(spielPosition[i].toString()); //hier Tabellenzelle mit zufälliger Position "holen"
+                let platz = document.getElementById(i + 1 + ""); //hier Tabellenzelle mit zufälliger Position "holen"
                 platz.appendChild(karte); //karte in das Feld mit der zufällig generierten Position speichern 
                 //eigener Versuch die Bilder zufällig anzuordnen, aber wurde doch nur sortiert zurückgegeben, deshalb dann die .sort in Zeile 175
                 /*let positionierung: number = Math.floor((Math.random() * ((spielPosition.length - 1) - 0)) + 0); //Zahl zwischen 0 und 19 (bzw. 19 zählt runter)
@@ -167,10 +133,52 @@ var Endabgabe;
             image.style.opacity = "0"; //Karte noch verstecken 
             return image;
         }
+        let aufgedeckteKarten = [];
+        function aufdecken(_event) {
+            let aufgedeckt = _event.target;
+            aufgedeckteKarten.push(aufgedeckt);
+            aufgedeckt.style.opacity = "100"; //Bild dann anzeigen
+            if (aufgedeckteKarten.length == 2) {
+                if (aufgedeckteKarten[0].src == aufgedeckteKarten[1].src) {
+                    aufgedeckteKarten = []; //Array wieder leeren 
+                    count += 1;
+                    if (count == 10) { //alle 10 Pärchen gefunden 
+                        //Spiel beenden und Zeit stoppen und auf DeinScore weiterleiten 
+                        let dateZwei = new Date();
+                        let spielende = dateZwei.getTime();
+                        console.log(spielende);
+                        //sessionStorage.setItem("ende", spielende.toString());
+                        let spielzeit = (spielende - parseInt(sessionStorage.getItem("beginn"))) / 1000; //durch 1000 dividieren für Sekunden 
+                        sessionStorage.setItem("dauer", spielzeit.toString());
+                        console.log(spielzeit); //Überprüfung
+                        window.location.href = "DeinScore.html"; //Weiterleitung auf DeinScore
+                        // bzw. richtige https-Adresse 
+                        //Quelle: https://www.w3schools.com/js/js_window_location.asp
+                    }
+                }
+                else {
+                    //hier Zeitverzögerung 
+                    setTimeout(zudecken, 1500);
+                    //Quelle: https://www.w3schools.com/js/js_timing.asp
+                }
+            }
+            else if (aufgedeckteKarten.length > 2) {
+                zudecken();
+            }
+        }
+        function zudecken() {
+            for (let i = 0; i < aufgedeckteKarten.length; i++) {
+                aufgedeckteKarten[i].style.opacity = "0";
+            }
+            aufgedeckteKarten = []; //Array wieder leeren 
+        }
     }
     //DeinScore.html
     else if ((document.querySelector("title").getAttribute("id") == "DeinScore")) {
         let serverAntwort = document.getElementById("serverantwort");
+        let zeit = sessionStorage.getItem("dauer");
+        let scoreZeit = document.getElementById("zeit");
+        scoreZeit.innerText = zeit; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
         async function datenEingeben() {
             let daten = new FormData(document.forms[0]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
@@ -185,9 +193,6 @@ var Endabgabe;
             console.log(ausgabe);
             serverAntwort.innerText = ausgabe;
         }
-        let zeit = sessionStorage.getItem("dauer");
-        let scoreZeit = document.getElementById("zeit");
-        scoreZeit.innerText = zeit; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
         let buttonScoredaten = document.getElementById("bestaetigen"); //Button machen auf DeinScore
         buttonScoredaten.addEventListener("click", datenEingeben);
     }
@@ -228,7 +233,7 @@ var Endabgabe;
             let zwischenpeicher;
             for (let a = 1; a < größe; a++) {
                 for (let b = größe - 1; b >= a; b--) {
-                    if (_array[b - 1].zeit > _array[b].zeit) {
+                    if (parseInt(_array[b - 1].zeit) > parseInt(_array[b].zeit)) { //Zeitstring in Zahl umwandel, dass man vergleichen kann 
                         zwischenpeicher = _array[b - 1];
                         _array[b - 1] = _array[b];
                         _array[b] = zwischenpeicher;

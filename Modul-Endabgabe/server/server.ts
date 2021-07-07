@@ -35,7 +35,7 @@ export namespace Endabgabe {
             let pfad: string = <string>url.pathname; //pathname der Url in String speichern
             let karte: Memorykarte = {bildname: url.query.bildname + "", bildurl: url.query.bildurl + ""}; //"" damit es als String erkannt wird 
             let entfernen: string | string[] = url.query.bildname + "";
-            let score: Scoredaten = {name: url.query.name + "", zeit: parseInt(url.query.zeit + "")};
+            let score: Scoredaten = {name: url.query.name + "", zeit: url.query.zeit + ""};
 
             if (pfad == "/kartenAnzeigen") {
                 let anzeige: Memorykarte[] = await memoryAnzeigen(urlDB);
@@ -129,8 +129,8 @@ export namespace Endabgabe {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
     
-        let infos: Mongo.Collection = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
-        infos.insertOne(_scoredaten); //Daten in die Datenbank speichern 
+        let spielerdaten: Mongo.Collection = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
+        spielerdaten.insertOne(_scoredaten); //Daten in die Datenbank speichern 
         let antwort: string = "Deine Daten wurden eingetragen";
         return antwort;
     }
@@ -141,8 +141,8 @@ export namespace Endabgabe {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
     
-        let infos: Mongo.Collection = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
-        let cursor: Mongo.Cursor = infos.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
+        let spielerdaten: Mongo.Collection = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
+        let cursor: Mongo.Cursor = spielerdaten.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
         let result: Scoredaten[] = await cursor.toArray(); //hier komplette Daten aus der Datenbank 
         return result;
     }
@@ -158,7 +158,7 @@ export namespace Endabgabe {
 
     interface Scoredaten {
         name: string;
-        zeit: number;
+        zeit: string;
     }
 
 

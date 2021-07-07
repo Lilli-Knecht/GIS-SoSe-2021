@@ -117,9 +117,11 @@ input {
 
 td {
     justify-content: center;
-    background-color: darkgrey;
-    width: 150px;
-    height: 120px;
+    background-image: url("Beispieldaten/Rückseite_1.jpg");
+    width: fit-content;
+    height: fit-content;
+    opacity: 0;
+    border: 1px solid lightgrey;
 }
 
 .karte {

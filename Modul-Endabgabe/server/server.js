@@ -28,7 +28,7 @@ var Endabgabe;
             let pfad = url.pathname; //pathname der Url in String speichern
             let karte = { bildname: url.query.bildname + "", bildurl: url.query.bildurl + "" }; //"" damit es als String erkannt wird 
             let entfernen = url.query.bildname + "";
-            let score = { name: url.query.name + "", zeit: parseInt(url.query.zeit + "") };
+            let score = { name: url.query.name + "", zeit: url.query.zeit + "" };
             if (pfad == "/kartenAnzeigen") {
                 let anzeige = await memoryAnzeigen(urlDB);
                 //console.log(anzeige);
@@ -94,8 +94,8 @@ var Endabgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let infos = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
-        infos.insertOne(_scoredaten); //Daten in die Datenbank speichern 
+        let spielerdaten = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
+        spielerdaten.insertOne(_scoredaten); //Daten in die Datenbank speichern 
         let antwort = "Deine Daten wurden eingetragen";
         return antwort;
     }
@@ -103,8 +103,8 @@ var Endabgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        let infos = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
-        let cursor = infos.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
+        let spielerdaten = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
+        let cursor = spielerdaten.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
         let result = await cursor.toArray(); //hier komplette Daten aus der Datenbank 
         return result;
     }
