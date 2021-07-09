@@ -27,7 +27,7 @@ h1{
     padding: 5px;
 }
 
-.unterseiten{
+.Unterseiten{
     background-color: turquoise;
     padding: 10px;
     font-size: 2rem;
@@ -35,7 +35,7 @@ h1{
     margin-top: 50px;
 }
 
-.unterseiten:hover, .navigation:hover, #spielen:hover{
+.Unterseiten:hover, .Navigation:hover, #spielen:hover{
     background-color: darkturquoise;
 }
 
@@ -53,7 +53,7 @@ h1{
     justify-content: flex-end;
 }
 
-.navigation{
+.Navigation{
     background-color: turquoise;
     padding: 5px;
     height: min-content;
@@ -108,7 +108,7 @@ input {
     flex-wrap: wrap;
 }
 
-.bildkarteMitInfo{
+.BildkarteMitInfo{
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -130,7 +130,7 @@ input {
     border: 1px solid lightgrey;
 }
 
-.karte {
+.Karte {
     justify-content: center;
     width: 150px;
     height: 120px;
@@ -162,7 +162,7 @@ input {
         flex-direction: column;
     }
 
-    .unterseiten {
+    .Unterseiten {
         font-size: 3.5rem;
         padding: 20px;
     }
@@ -207,7 +207,7 @@ input {
         font-size: 1rem;
     }
 
-    .unterseiten {
+    .Unterseiten {
         font-size: 2rem;
     }
 
@@ -215,7 +215,7 @@ input {
         top: 40px;
     }
 
-    .karten {
+    .Karten {
         width: 60px;
         height: 45px;
     }

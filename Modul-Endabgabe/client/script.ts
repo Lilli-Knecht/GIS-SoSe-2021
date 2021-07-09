@@ -31,7 +31,7 @@ namespace Endabgabe {
 
         function bildkarteInfos(_karte: Memorykarte): HTMLDivElement { //hier Anzeige der Bildkarten mit Bildname 
             let karte: HTMLDivElement = document.createElement("div");
-            karte.classList.add("bildkarteMitInfo");
+            karte.classList.add("BildkarteMitInfo");
     
             let image: HTMLImageElement = document.createElement("img");
             image.src = _karte.bildurl; 
@@ -181,7 +181,7 @@ namespace Endabgabe {
 
         function bildkarte(_auswahl: Memorykarte): HTMLImageElement { //hier Anzeige der Bildkarten (nur Bild)
         let image: HTMLImageElement = document.createElement("img");
-        image.classList.add("karte");
+        image.classList.add("Karte");
         image.src = _auswahl.bildurl;
         image.addEventListener("click", aufdecken); //jeder Karte den Listener geben bzw. jeder Tabellenzelle?
         image.style.opacity = "0"; //Karte noch verstecken 
