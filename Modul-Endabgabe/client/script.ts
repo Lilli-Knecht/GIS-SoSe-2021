@@ -58,6 +58,8 @@ namespace Endabgabe {
             let antwort: Response = await fetch(url);
             let ausgabe: string = await antwort.text(); 
             console.log(ausgabe); 
+
+            location.reload();
     
         }
     
@@ -77,6 +79,8 @@ namespace Endabgabe {
             let antwort: Response = await fetch(url);
             let ausgabe: string = await antwort.text(); 
             console.log(ausgabe); 
+
+            location.reload();
     
         }
     
@@ -104,7 +108,7 @@ namespace Endabgabe {
             url = url + "?" + query.toString(); //in String umwandeln 
             let antwort: Response = await fetch(url); //warten auf url
             let ausgabe: Memorykarte[] = await antwort.json(); //warten auf antwort 
-            //console.log(ausgabe);
+            console.log(ausgabe);
             
             let spielkarten: Memorykarte[] = []; //hier 10 Pärchen bzw 20 Karten reinspeichern --> zufällig aus der ausgabe generieren lassen 
 
@@ -294,13 +298,14 @@ namespace Endabgabe {
             url = url + "?" + query.toString();
             let antwort: Response = await fetch(url);
             let ausgabe: Scoredaten[] = await antwort.json(); //hier auf Antowrt mit Daten warten 
-            console.log(ausgabe); 
+            //console.log(ausgabe); 
 
             //jetzt aus ausgabe die topZehn rausfiltern --> sortieren Funktion (von klein nach groß (Zeit)) und dann aus dem sortierten Array die ersten Zehn ausgeben 
-            sortieren(ausgabe);
+            let scoresSortiert: Scoredaten[] = ausgabe;
+
+            sortieren(scoresSortiert);
             leeren();
             
-
 
             for (let i: number = 0; i < 10; i++) { //hier werden dann immer nur die ersten 10 rausgezogen --> also die besten 10
                 //hier in tabelle einspeichern --> jeweils eigene tabellenzeile konfigurieren 
@@ -309,11 +314,11 @@ namespace Endabgabe {
 
                 
                 let name: HTMLSpanElement = <HTMLSpanElement> document.createElement("span");
-                name.innerText = ausgabe[i].name + ": ";
+                name.innerText = scoresSortiert[i].name + ": ";
                 spalteName.appendChild(name);
 
                 let zeit: HTMLSpanElement = <HTMLSpanElement> document.createElement("span");
-                zeit.innerText = ausgabe[i].zeit + " s";
+                zeit.innerText = scoresSortiert[i].zeit + " s";
                 spalteZeit.appendChild(zeit);
 
             }
@@ -327,10 +332,9 @@ namespace Endabgabe {
 
 
         function sortieren(_array: Scoredaten[]): Scoredaten[] {
-            let größe: number = _array.length - 1; //so viele Einträge zum sortieren 
             let zwischenpeicher: Scoredaten;
-            for (let a: number = 1; a < größe; a++) {
-                for (let b: number = größe - 1; b >= a; b--) {
+            for (let a: number = 1; a < _array.length; a++) {
+                for (let b: number = _array.length - 1; b >= a; b--) {
                     if (parseInt(_array[b - 1].zeit) > parseInt(_array[b].zeit)) { //Zeitstring in Zahl umwandel, dass man vergleichen kann 
                         zwischenpeicher = _array[b - 1];
                         _array[b - 1] = _array[b];

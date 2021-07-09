@@ -67,6 +67,7 @@ button {
     background-color: turquoise;
     border: none;
     padding: 5px;
+    border-radius: 5%;
 }
 
 button:hover {

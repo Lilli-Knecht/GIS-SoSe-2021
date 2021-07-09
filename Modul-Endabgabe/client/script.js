@@ -45,6 +45,7 @@ var Endabgabe;
             let antwort = await fetch(url);
             let ausgabe = await antwort.text();
             console.log(ausgabe);
+            location.reload();
         }
         let buttonHinzu = document.getElementById("hinzufuegen"); //Button machen auf Admin
         buttonHinzu.addEventListener("click", bildHinzu);
@@ -60,6 +61,7 @@ var Endabgabe;
             let antwort = await fetch(url);
             let ausgabe = await antwort.text();
             console.log(ausgabe);
+            location.reload();
         }
         let buttonLoeschen = document.getElementById("loeschen"); //Button machen auf Admin
         buttonLoeschen.addEventListener("click", bildLoeschen);
@@ -78,7 +80,7 @@ var Endabgabe;
             url = url + "?" + query.toString(); //in String umwandeln 
             let antwort = await fetch(url); //warten auf url
             let ausgabe = await antwort.json(); //warten auf antwort 
-            //console.log(ausgabe);
+            console.log(ausgabe);
             let spielkarten = []; //hier 10 Pärchen bzw 20 Karten reinspeichern --> zufällig aus der ausgabe generieren lassen 
             for (let i = 0; i < 10; i++) { //10 Memorykarten generieren lassen und doppelt nehmen 
                 let auswahl = Math.floor((Math.random() * ((ausgabe.length - 1) - 0 + 1)) + 0); //zufällige Zahl (Größe des ausgabearrays) generieren lassen 
@@ -216,19 +218,20 @@ var Endabgabe;
             url = url + "?" + query.toString();
             let antwort = await fetch(url);
             let ausgabe = await antwort.json(); //hier auf Antowrt mit Daten warten 
-            console.log(ausgabe);
+            //console.log(ausgabe); 
             //jetzt aus ausgabe die topZehn rausfiltern --> sortieren Funktion (von klein nach groß (Zeit)) und dann aus dem sortierten Array die ersten Zehn ausgeben 
-            sortieren(ausgabe);
+            let scoresSortiert = ausgabe;
+            sortieren(scoresSortiert);
             leeren();
             for (let i = 0; i < 10; i++) { //hier werden dann immer nur die ersten 10 rausgezogen --> also die besten 10
                 //hier in tabelle einspeichern --> jeweils eigene tabellenzeile konfigurieren 
                 let spalteName = document.getElementById("n" + i); //immer eine Zeile weiter 
                 let spalteZeit = document.getElementById("z" + i);
                 let name = document.createElement("span");
-                name.innerText = ausgabe[i].name + ": ";
+                name.innerText = scoresSortiert[i].name + ": ";
                 spalteName.appendChild(name);
                 let zeit = document.createElement("span");
-                zeit.innerText = ausgabe[i].zeit + " s";
+                zeit.innerText = scoresSortiert[i].zeit + " s";
                 spalteZeit.appendChild(zeit);
             }
         }
@@ -237,10 +240,9 @@ var Endabgabe;
         let buttonNeuesSpiel = document.getElementById("neu"); //Button machen auf DeinScore
         buttonNeuesSpiel.addEventListener("click", neuesSpiel);
         function sortieren(_array) {
-            let größe = _array.length - 1; //so viele Einträge zum sortieren 
             let zwischenpeicher;
-            for (let a = 1; a < größe; a++) {
-                for (let b = größe - 1; b >= a; b--) {
+            for (let a = 1; a < _array.length; a++) {
+                for (let b = _array.length - 1; b >= a; b--) {
                     if (parseInt(_array[b - 1].zeit) > parseInt(_array[b].zeit)) { //Zeitstring in Zahl umwandel, dass man vergleichen kann 
                         zwischenpeicher = _array[b - 1];
                         _array[b - 1] = _array[b];
