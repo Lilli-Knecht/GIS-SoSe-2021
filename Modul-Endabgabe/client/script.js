@@ -177,8 +177,9 @@ var Endabgabe;
     else if ((document.querySelector("title").getAttribute("id") == "DeinScore")) {
         let serverAntwort = document.getElementById("serverantwort");
         let zeit = sessionStorage.getItem("dauer");
+        console.log(zeit);
         let scoreZeit = document.getElementById("zeit");
-        scoreZeit.innerText = zeit; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
+        scoreZeit.value = zeit; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
         async function datenEingeben() {
             let daten = new FormData(document.forms[0]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
@@ -190,11 +191,16 @@ var Endabgabe;
             url = url + "?" + query.toString();
             let antwort = await fetch(url);
             let ausgabe = await antwort.text();
-            console.log(ausgabe);
-            serverAntwort.innerText = ausgabe;
+            console.log(ausgabe); //nur Überprüfung
+            serverAntwort.innerHTML = ausgabe;
+            setTimeout(weiterleitung, 2000);
+            //Quelle: https://www.w3schools.com/js/js_timing.asp
         }
-        let buttonScoredaten = document.getElementById("bestaetigen"); //Button machen auf DeinScore
+        let buttonScoredaten = document.getElementById("bestaetigen");
         buttonScoredaten.addEventListener("click", datenEingeben);
+        function weiterleitung() {
+            window.location.href = "Highscoreliste.html"; //Weiterleitung auf Hidhscoreseite
+        }
     }
     //Highscore.html
     else if ((document.querySelector("title").getAttribute("id") == "Highscore")) {
@@ -203,7 +209,7 @@ var Endabgabe;
             let daten = new FormData(document.forms[0]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             let url = "http://localhost:8100"; //zum lokal testen 
-            url += "/kartenAnzeigen"; //Button anzeigen gedrückt 
+            url += "/scoredatenAnzeigen"; //Button anzeigen gedrückt 
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
             let query = new URLSearchParams(daten);
@@ -213,21 +219,23 @@ var Endabgabe;
             console.log(ausgabe);
             //jetzt aus ausgabe die topZehn rausfiltern --> sortieren Funktion (von klein nach groß (Zeit)) und dann aus dem sortierten Array die ersten Zehn ausgeben 
             sortieren(ausgabe);
+            leeren();
             for (let i = 0; i < 10; i++) { //hier werden dann immer nur die ersten 10 rausgezogen --> also die besten 10
                 //hier in tabelle einspeichern --> jeweils eigene tabellenzeile konfigurieren 
-                let zeile = document.getElementById(i + ""); //immer eine Zeile weiter 
-                let div = document.createElement("div");
+                let spalteName = document.getElementById("n" + i); //immer eine Zeile weiter 
+                let spalteZeit = document.getElementById("z" + i);
                 let name = document.createElement("span");
-                name.innerText = ausgabe[i].name;
-                div.appendChild(name);
+                name.innerText = ausgabe[i].name + ": ";
+                spalteName.appendChild(name);
                 let zeit = document.createElement("span");
-                zeit.innerText = ausgabe[i].zeit + "";
-                div.appendChild(zeit);
-                zeile.appendChild(div);
+                zeit.innerText = ausgabe[i].zeit + " s";
+                spalteZeit.appendChild(zeit);
             }
         }
         let buttonScores = document.getElementById("scoreAnzeige"); //Button machen auf DeinScore
         buttonScores.addEventListener("click", scoresAnzeigen);
+        let buttonNeuesSpiel = document.getElementById("neu"); //Button machen auf DeinScore
+        buttonNeuesSpiel.addEventListener("click", neuesSpiel);
         function sortieren(_array) {
             let größe = _array.length - 1; //so viele Einträge zum sortieren 
             let zwischenpeicher;
@@ -241,6 +249,18 @@ var Endabgabe;
                 }
             }
             return _array;
+        }
+        function leeren() {
+            for (let i = 0; i < 10; i++) { //hier werden dann immer nur die ersten 10 rausgezogen --> also die besten 10
+                //hier in tabelle einspeichern --> jeweils eigene tabellenzeile konfigurieren 
+                let spalteName = document.getElementById("n" + i); //immer eine Zeile weiter 
+                let spalteZeit = document.getElementById("z" + i);
+                spalteName.innerHTML = "";
+                spalteZeit.innerHTML = "";
+            }
+        }
+        function neuesSpiel() {
+            window.location.href = "Spiel.html"; //Weiterleitung auf Spielseite
         }
     }
 })(Endabgabe || (Endabgabe = {}));

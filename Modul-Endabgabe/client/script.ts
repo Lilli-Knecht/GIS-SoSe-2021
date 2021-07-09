@@ -243,8 +243,10 @@ namespace Endabgabe {
         
         let serverAntwort: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("serverantwort");
         let zeit: string = sessionStorage.getItem("dauer");
+        console.log(zeit);
+        
         let scoreZeit: HTMLInputElement = <HTMLInputElement> document.getElementById("zeit");
-        scoreZeit.innerText = zeit; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
+        scoreZeit.value = zeit; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
 
         async function datenEingeben(): Promise<void> { //Name und Score eingeben und abschicken an Datenbank
             let daten: FormData = new FormData(document.forms[0]);
@@ -258,13 +260,20 @@ namespace Endabgabe {
             url = url + "?" + query.toString();
             let antwort: Response = await fetch(url);
             let ausgabe: string = await antwort.text(); 
-            console.log(ausgabe); 
-            serverAntwort.innerText = ausgabe;
+            console.log(ausgabe); //nur Überprüfung
+            serverAntwort.innerHTML = ausgabe;
+
+            setTimeout(weiterleitung, 2000);
+            //Quelle: https://www.w3schools.com/js/js_timing.asp
     
         }
     
-        let buttonScoredaten: HTMLButtonElement = <HTMLButtonElement> document.getElementById("bestaetigen"); //Button machen auf DeinScore
+        let buttonScoredaten: HTMLButtonElement = <HTMLButtonElement> document.getElementById("bestaetigen"); 
         buttonScoredaten.addEventListener("click", datenEingeben);
+
+        function weiterleitung(): void {
+            window.location.href = "Highscoreliste.html"; //Weiterleitung auf Hidhscoreseite
+        }
 
         
     }
@@ -277,7 +286,7 @@ namespace Endabgabe {
             let daten: FormData = new FormData(document.forms[0]);
             //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/kartenAnzeigen"; //Button anzeigen gedrückt 
+            url += "/scoredatenAnzeigen"; //Button anzeigen gedrückt 
             
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
@@ -289,23 +298,23 @@ namespace Endabgabe {
 
             //jetzt aus ausgabe die topZehn rausfiltern --> sortieren Funktion (von klein nach groß (Zeit)) und dann aus dem sortierten Array die ersten Zehn ausgeben 
             sortieren(ausgabe);
+            leeren();
+            
 
 
             for (let i: number = 0; i < 10; i++) { //hier werden dann immer nur die ersten 10 rausgezogen --> also die besten 10
                 //hier in tabelle einspeichern --> jeweils eigene tabellenzeile konfigurieren 
-                let zeile: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById(i + ""); //immer eine Zeile weiter 
+                let spalteName: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById("n" + i); //immer eine Zeile weiter 
+                let spalteZeit: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById("z" + i);
 
-                let div: HTMLDivElement = <HTMLDivElement> document.createElement("div");
                 
                 let name: HTMLSpanElement = <HTMLSpanElement> document.createElement("span");
-                name.innerText = ausgabe[i].name;
-                div.appendChild(name);
+                name.innerText = ausgabe[i].name + ": ";
+                spalteName.appendChild(name);
 
                 let zeit: HTMLSpanElement = <HTMLSpanElement> document.createElement("span");
-                zeit.innerText = ausgabe[i].zeit + "";
-                div.appendChild(zeit);
-
-                zeile.appendChild(div);
+                zeit.innerText = ausgabe[i].zeit + " s";
+                spalteZeit.appendChild(zeit);
 
             }
         
@@ -313,6 +322,8 @@ namespace Endabgabe {
 
         let buttonScores: HTMLButtonElement = <HTMLButtonElement> document.getElementById("scoreAnzeige"); //Button machen auf DeinScore
         buttonScores.addEventListener("click", scoresAnzeigen);
+        let buttonNeuesSpiel: HTMLButtonElement = <HTMLButtonElement> document.getElementById("neu"); //Button machen auf DeinScore
+        buttonNeuesSpiel.addEventListener("click", neuesSpiel);
 
 
         function sortieren(_array: Scoredaten[]): Scoredaten[] {
@@ -329,6 +340,22 @@ namespace Endabgabe {
                 }
             }
             return _array;
+        }
+
+        function leeren(): void {
+            for (let i: number = 0; i < 10; i++) { //hier werden dann immer nur die ersten 10 rausgezogen --> also die besten 10
+                //hier in tabelle einspeichern --> jeweils eigene tabellenzeile konfigurieren 
+                let spalteName: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById("n" + i); //immer eine Zeile weiter 
+                let spalteZeit: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById("z" + i);
+
+                spalteName.innerHTML = "";
+                spalteZeit.innerHTML = "";
+
+            }
+        }
+
+        function neuesSpiel(): void {
+            window.location.href = "Spiel.html"; //Weiterleitung auf Spielseite
         }
 
 
