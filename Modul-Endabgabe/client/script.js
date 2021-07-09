@@ -5,8 +5,8 @@ var Endabgabe;
     //Admin.html
     if ((document.querySelector("title").getAttribute("id") == "Admin")) {
         async function anzeigeBilder() {
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url = "http://localhost:8100"; //zum lokal testen 
+            let url = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/kartenAnzeigen"; //Button anzeigen gedrückt 
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
@@ -35,8 +35,8 @@ var Endabgabe;
         }
         async function bildHinzu() {
             let daten = new FormData(document.forms[0]);
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url = "http://localhost:8100"; //zum lokal testen 
+            let url = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/hinzufuegen"; //Button hinzufügen gedrückt 
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
@@ -51,8 +51,8 @@ var Endabgabe;
         buttonHinzu.addEventListener("click", bildHinzu);
         async function bildLoeschen() {
             let daten = new FormData(document.forms[1]);
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url = "http://localhost:8100"; //zum lokal testen 
+            let url = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/loeschen"; //Button löschen gedrückt 
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
@@ -71,8 +71,8 @@ var Endabgabe;
         let count = 0; //Counter zum Zählen der richtigen Pärchen 
         async function erstellen() {
             let daten = new FormData(document.forms[0]); //Objekt FormData wird generiert
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url = "http://localhost:8100"; //zum lokal testen 
+            let url = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/spielen";
             //nächste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
@@ -184,8 +184,8 @@ var Endabgabe;
         scoreZeit.value = zeit; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
         async function datenEingeben() {
             let daten = new FormData(document.forms[0]);
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url = "http://localhost:8100"; //zum lokal testen 
+            let url = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/scoredatenAbgeschickt"; //Button bestaetigen gedrückt 
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
@@ -209,8 +209,8 @@ var Endabgabe;
         //hier Scoredaten anzeigen mit topZehn und dann nur die besten 10 anzeigen --> durchgehen und in Tabelle schreiben 
         async function scoresAnzeigen() {
             let daten = new FormData(document.forms[0]);
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url = "http://localhost:8100"; //zum lokal testen 
+            let url = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/scoredatenAnzeigen"; //Button anzeigen gedrückt 
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 

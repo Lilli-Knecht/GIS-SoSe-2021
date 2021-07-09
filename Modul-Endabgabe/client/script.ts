@@ -6,8 +6,8 @@ namespace Endabgabe {
     if ((document.querySelector("title").getAttribute("id") == "Admin" )) {
 
         async function anzeigeBilder(): Promise<void> {
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+            let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/kartenAnzeigen"; //Button anzeigen gedrückt 
             
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
@@ -47,8 +47,8 @@ namespace Endabgabe {
 
         async function bildHinzu(): Promise<void> { //Name und URL eingeben und abschicken 
             let daten: FormData = new FormData(document.forms[0]);
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+            let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/hinzufuegen"; //Button hinzufügen gedrückt 
             
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
@@ -68,8 +68,8 @@ namespace Endabgabe {
 
         async function bildLoeschen(): Promise<void> { //Name oder ID eingeben und abschicken 
             let daten: FormData = new FormData(document.forms[1]);
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+            let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/loeschen"; //Button löschen gedrückt 
             
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
@@ -98,8 +98,8 @@ namespace Endabgabe {
 
         async function erstellen(): Promise<void> {
             let daten: FormData = new FormData(document.forms[0]); //Objekt FormData wird generiert
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+            let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/spielen"; 
 
             //nächste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
@@ -254,8 +254,8 @@ namespace Endabgabe {
 
         async function datenEingeben(): Promise<void> { //Name und Score eingeben und abschicken an Datenbank
             let daten: FormData = new FormData(document.forms[0]);
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+            let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/scoredatenAbgeschickt"; //Button bestaetigen gedrückt 
             
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
@@ -288,8 +288,8 @@ namespace Endabgabe {
         //hier Scoredaten anzeigen mit topZehn und dann nur die besten 10 anzeigen --> durchgehen und in Tabelle schreiben 
         async function scoresAnzeigen(): Promise<void> {
             let daten: FormData = new FormData(document.forms[0]);
-            //let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
-            let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
+            let url: RequestInfo = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
+            //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
             url += "/scoredatenAnzeigen"; //Button anzeigen gedrückt 
             
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
