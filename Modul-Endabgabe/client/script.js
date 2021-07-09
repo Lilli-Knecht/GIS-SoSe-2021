@@ -24,7 +24,7 @@ var Endabgabe;
         buttonBildanzeige.addEventListener("click", anzeigeBilder);
         function bildkarteInfos(_karte) {
             let karte = document.createElement("div");
-            karte.classList.add("bildkarteMitInfo");
+            karte.classList.add("BildkarteMitInfo");
             let image = document.createElement("img");
             image.src = _karte.bildurl;
             karte.appendChild(image);
@@ -129,7 +129,7 @@ var Endabgabe;
         }
         function bildkarte(_auswahl) {
             let image = document.createElement("img");
-            image.classList.add("karte");
+            image.classList.add("Karte");
             image.src = _auswahl.bildurl;
             image.addEventListener("click", aufdecken); //jeder Karte den Listener geben bzw. jeder Tabellenzelle?
             image.style.opacity = "0"; //Karte noch verstecken 
