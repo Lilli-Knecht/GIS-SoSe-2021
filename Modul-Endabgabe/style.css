@@ -215,9 +215,13 @@ input {
         top: 40px;
     }
 
+    #memory tbody {
+        width: 100%;
+    }
+
     .Karten {
-        width: 60px;
-        height: 45px;
+        width: 40px;
+        height: 30px;
     }
 
     #memorykarten {
