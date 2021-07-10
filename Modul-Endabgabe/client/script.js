@@ -7,7 +7,7 @@ var Endabgabe;
         async function anzeigeBilder() {
             let url = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/kartenAnzeigen"; //Button anzeigen gedrückt 
+            url += "/kartenAnzeigen"; //Button anzeigen/aktualisieren gedrückt 
             //näachste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
             let antwort = await fetch(url);
@@ -73,7 +73,7 @@ var Endabgabe;
             let daten = new FormData(document.forms[0]); //Objekt FormData wird generiert
             let url = "https://gisombsose2021.herokuapp.com"; // Verbindung zu heroku (wichtig letzten / wegmachen)
             //let url: RequestInfo = "http://localhost:8100"; //zum lokal testen 
-            url += "/spielen";
+            url += "/spielen"; //Button Play gedrückt
             //nächste Zeile sorgt dafür, dass any nicht mehr unterstrichen wird
             //tslint:disable-next-line 
             let query = new URLSearchParams(daten);
@@ -83,7 +83,7 @@ var Endabgabe;
             console.log(ausgabe);
             let spielkarten = []; //hier 10 Pärchen bzw 20 Karten reinspeichern --> zufällig aus der ausgabe generieren lassen 
             for (let i = 0; i < 10; i++) { //10 Memorykarten generieren lassen und doppelt nehmen 
-                let auswahl = Math.floor((Math.random() * ((ausgabe.length - 1) - 0 + 1)) + 0); //zufällige Zahl (Größe des ausgabearrays) generieren lassen 
+                let auswahl = Math.floor((Math.random() * ((ausgabe.length - 1) - 0 + 1)) + 0); //zufällige Zahl (innerhalb der Größe des ausgabearrays) generieren lassen 
                 let karteEins = ausgabe[auswahl];
                 let karteZwei = karteEins;
                 spielkarten.push(karteEins); //hier in das spielkartenarray eintragen, um später damit weiterzuarbeiten 
@@ -101,7 +101,7 @@ var Endabgabe;
             sessionStorage.setItem("beginn", spielbeginn.toString());
             console.log(spielbeginn);
         }
-        let buttonPlay = document.getElementById("spielen"); //Button machen auf DeinScore
+        let buttonPlay = document.getElementById("spielen");
         buttonPlay.addEventListener("click", erstellen);
         function rückseitenEinblenden() {
             for (let i = 1; i < 21; i++) {
@@ -111,12 +111,13 @@ var Endabgabe;
         }
         function position(_spielkarten) {
             _spielkarten.sort(() => .5 - Math.random()); //sortiert das Array zufällig um 
-            //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+            //Quelle: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array (Tipp von Marissa, nachdem meine Funktion nicht geklappt hat)
+            //let spielPosition: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
             for (let i = 0; i < 20; i++) { //20 mal machen, um alle Karten zu positionieren 
                 let karte = bildkarte(_spielkarten[i]);
                 let platz = document.getElementById(i + 1 + ""); //hier Tabellenzelle mit zufälliger Position "holen"
                 platz.appendChild(karte); //karte in das Feld mit der zufällig generierten Position speichern 
-                //eigener Versuch die Bilder zufällig anzuordnen, aber wurde doch nur sortiert zurückgegeben, deshalb dann die .sort in Zeile 175
+                //eigener Versuch die Bilder zufällig anzuordnen, aber wurde doch nur sortiert zurückgegeben, deshalb dann die .sort in Zeile 175 genommen
                 /*let positionierung: number = Math.floor((Math.random() * ((spielPosition.length - 1) - 0)) + 0); //Zahl zwischen 0 und 19 (bzw. 19 zählt runter)
                 let karte: HTMLImageElement = bildkarte(_spielkarten[positionierung]);
 
@@ -131,11 +132,11 @@ var Endabgabe;
             let image = document.createElement("img");
             image.classList.add("Karte");
             image.src = _auswahl.bildurl;
-            image.addEventListener("click", aufdecken); //jeder Karte den Listener geben bzw. jeder Tabellenzelle?
+            image.addEventListener("click", aufdecken);
             image.style.opacity = "0"; //Karte noch verstecken 
             return image;
         }
-        let aufgedeckteKarten = [];
+        let aufgedeckteKarten = []; //Aufgedeckte Karten zwischenspeichern, um vergleichen zu können
         function aufdecken(_event) {
             let aufgedeckt = _event.target;
             aufgedeckteKarten.push(aufgedeckt);
@@ -149,12 +150,11 @@ var Endabgabe;
                         let dateZwei = new Date();
                         let spielende = dateZwei.getTime();
                         console.log(spielende);
-                        //sessionStorage.setItem("ende", spielende.toString());
+                        //Ende - Anfang = Spieldauer
                         let spielzeit = (spielende - parseInt(sessionStorage.getItem("beginn"))) / 1000; //durch 1000 dividieren für Sekunden 
                         sessionStorage.setItem("dauer", spielzeit.toString());
                         console.log(spielzeit); //Überprüfung
-                        window.location.href = "DeinScore.html"; //Weiterleitung auf DeinScore
-                        // bzw. richtige https-Adresse 
+                        window.location.href = "DeinScore.html"; //Weiterleitung auf DeinScore 
                         //Quelle: https://www.w3schools.com/js/js_window_location.asp
                     }
                 }
@@ -179,7 +179,7 @@ var Endabgabe;
     else if ((document.querySelector("title").getAttribute("id") == "DeinScore")) {
         let serverAntwort = document.getElementById("serverantwort");
         let zeit = sessionStorage.getItem("dauer");
-        console.log(zeit);
+        console.log(zeit); //Überprüfung 
         let scoreZeit = document.getElementById("zeit");
         scoreZeit.value = zeit; //gespeicherte Spielzeit in inputfeld speichern und dann in Anfrage übergeben
         async function datenEingeben() {
@@ -201,7 +201,7 @@ var Endabgabe;
         let buttonScoredaten = document.getElementById("bestaetigen");
         buttonScoredaten.addEventListener("click", datenEingeben);
         function weiterleitung() {
-            window.location.href = "Highscoreliste.html"; //Weiterleitung auf Hidhscoreseite
+            window.location.href = "Highscoreliste.html"; //Weiterleitung auf Highscoreseite
         }
     }
     //Highscore.html
@@ -224,7 +224,7 @@ var Endabgabe;
             sortieren(scoresSortiert);
             leeren();
             for (let i = 0; i < 10; i++) { //hier werden dann immer nur die ersten 10 rausgezogen --> also die besten 10
-                //hier in tabelle einspeichern --> jeweils eigene tabellenzeile konfigurieren 
+                //hier in Tabelle einspeichern 
                 let spalteName = document.getElementById("n" + i); //immer eine Zeile weiter 
                 let spalteZeit = document.getElementById("z" + i);
                 let name = document.createElement("span");
@@ -250,12 +250,12 @@ var Endabgabe;
                     }
                 }
             }
+            //Quelle: haben wir im ersten Semester in der Form in Programmieren gemacht
             return _array;
         }
         function leeren() {
-            for (let i = 0; i < 10; i++) { //hier werden dann immer nur die ersten 10 rausgezogen --> also die besten 10
-                //hier in tabelle einspeichern --> jeweils eigene tabellenzeile konfigurieren 
-                let spalteName = document.getElementById("n" + i); //immer eine Zeile weiter 
+            for (let i = 0; i < 10; i++) {
+                let spalteName = document.getElementById("n" + i);
                 let spalteZeit = document.getElementById("z" + i);
                 spalteName.innerHTML = "";
                 spalteZeit.innerHTML = "";

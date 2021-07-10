@@ -40,17 +40,17 @@ export namespace Endabgabe {
             if (pfad == "/kartenAnzeigen") {
                 let anzeige: Memorykarte[] = await memoryAnzeigen(urlDB);
                 //console.log(anzeige);
-                _response.write(JSON.stringify(anzeige));
+                _response.write(JSON.stringify(anzeige)); //Alle Bildkarten werden zurückgegeben
                 
             }
-            else if (pfad == "/hinzufuegen") { //hier Pfad, dass man Bild hinzufügen will
+            else if (pfad == "/hinzufuegen") { 
                 let antwort: string = await hinzufuegen(urlDB, karte);
                 console.log(antwort);
                 _response.write(antwort); //hier dann die Datenbank auslesen und als Antort zurückgeben
                 
             }
             else if (pfad == "/loeschen") {
-                let antwort: string = await loeschen(urlDB, entfernen); //hier dann loeschen aufrufen 
+                let antwort: string = await loeschen(urlDB, entfernen);  
                 console.log(antwort);
                 _response.write(antwort); //hier aktualisierte Daten aus der Datenbank als Antowrt zurückgeben 
                 
@@ -61,13 +61,13 @@ export namespace Endabgabe {
                 _response.write(JSON.stringify(spielkarten)); //alle Bildkarten zurückgeben 
 
             }
-            else if (pfad == "/scoredatenAbgeschickt") { //hier Pfad, dass ich Daten abgeschickt hab und nun in Datenbank speichern will
+            else if (pfad == "/scoredatenAbgeschickt") { 
                 let antwort: string = await scoredatenSpeichern(urlDB, score); 
                 console.log(antwort);
                 _response.write(antwort); //Anwort, die zurückkommt 
                   
             }
-            else if (pfad == "/scoredatenAnzeigen") { //hier Pfad, dass Daten aus Datenbank angezeigt werden
+            else if (pfad == "/scoredatenAnzeigen") { 
                 let daten: Scoredaten[] = await scoredaten(urlDB);
                 //console.log(daten);
                 _response.write(JSON.stringify(daten)); //hier dann die Datenbank auslesen und als Antort zurückgeben
@@ -94,7 +94,6 @@ export namespace Endabgabe {
     }
 
 
-    //hier immer nur undefined --> warum?
     async function hinzufuegen(_url: string, _karte: Memorykarte): Promise<string> {
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
     
@@ -109,9 +108,8 @@ export namespace Endabgabe {
 
 
 
-    //löschen mit bildnamen funktioniert nicht --> warum?
     async function loeschen(_url: string, _name: string | string[]): Promise<string> {
-        //hier dann Bildkarte löschen entweder über Bildname oder über id (id wäre eindeutiger)
+        //hier dann Bildkarte löschen entweder über Bildname oder über id 
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
     
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
@@ -142,8 +140,8 @@ export namespace Endabgabe {
         await mongoClient.connect();
     
         let spielerdaten: Mongo.Collection = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
-        let cursor: Mongo.Cursor = spielerdaten.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
-        let result: Scoredaten[] = await cursor.toArray(); //hier komplette Daten aus der Datenbank 
+        let cursor: Mongo.Cursor = spielerdaten.find(); 
+        let result: Scoredaten[] = await cursor.toArray(); //hier komplette Daten aus der Datenbank zurückgeben
         return result;
     }
 

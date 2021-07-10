@@ -32,15 +32,15 @@ var Endabgabe;
             if (pfad == "/kartenAnzeigen") {
                 let anzeige = await memoryAnzeigen(urlDB);
                 //console.log(anzeige);
-                _response.write(JSON.stringify(anzeige));
+                _response.write(JSON.stringify(anzeige)); //Alle Bildkarten werden zurückgegeben
             }
-            else if (pfad == "/hinzufuegen") { //hier Pfad, dass man Bild hinzufügen will
+            else if (pfad == "/hinzufuegen") {
                 let antwort = await hinzufuegen(urlDB, karte);
                 console.log(antwort);
                 _response.write(antwort); //hier dann die Datenbank auslesen und als Antort zurückgeben
             }
             else if (pfad == "/loeschen") {
-                let antwort = await loeschen(urlDB, entfernen); //hier dann loeschen aufrufen 
+                let antwort = await loeschen(urlDB, entfernen);
                 console.log(antwort);
                 _response.write(antwort); //hier aktualisierte Daten aus der Datenbank als Antowrt zurückgeben 
             }
@@ -49,12 +49,12 @@ var Endabgabe;
                 //console.log(spielkarten);
                 _response.write(JSON.stringify(spielkarten)); //alle Bildkarten zurückgeben 
             }
-            else if (pfad == "/scoredatenAbgeschickt") { //hier Pfad, dass ich Daten abgeschickt hab und nun in Datenbank speichern will
+            else if (pfad == "/scoredatenAbgeschickt") {
                 let antwort = await scoredatenSpeichern(urlDB, score);
                 console.log(antwort);
                 _response.write(antwort); //Anwort, die zurückkommt 
             }
-            else if (pfad == "/scoredatenAnzeigen") { //hier Pfad, dass Daten aus Datenbank angezeigt werden
+            else if (pfad == "/scoredatenAnzeigen") {
                 let daten = await scoredaten(urlDB);
                 //console.log(daten);
                 _response.write(JSON.stringify(daten)); //hier dann die Datenbank auslesen und als Antort zurückgeben
@@ -71,7 +71,6 @@ var Endabgabe;
         let spielkarten = await cursor.toArray(); //alle zurückgeben 
         return spielkarten;
     }
-    //hier immer nur undefined --> warum?
     async function hinzufuegen(_url, _karte) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
@@ -80,9 +79,8 @@ var Endabgabe;
         bildkarten.insertOne(_karte); //Daten in die Datenbank speichern 
         return "hinzugefügt";
     }
-    //löschen mit bildnamen funktioniert nicht --> warum?
     async function loeschen(_url, _name) {
-        //hier dann Bildkarte löschen entweder über Bildname oder über id (id wäre eindeutiger)
+        //hier dann Bildkarte löschen entweder über Bildname oder über id 
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
@@ -104,8 +102,8 @@ var Endabgabe;
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         let spielerdaten = mongoClient.db("Memory").collection("Spielerdaten"); //Collection aufrufen
-        let cursor = spielerdaten.find(); //hier auch wieder spezielle Suche möglich mit .find({name: "..."})
-        let result = await cursor.toArray(); //hier komplette Daten aus der Datenbank 
+        let cursor = spielerdaten.find();
+        let result = await cursor.toArray(); //hier komplette Daten aus der Datenbank zurückgeben
         return result;
     }
 })(Endabgabe = exports.Endabgabe || (exports.Endabgabe = {}));
