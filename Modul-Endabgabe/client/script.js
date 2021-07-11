@@ -93,6 +93,7 @@ var Endabgabe;
             }
             console.log(spielkarten); //nur Überprüfung 
             //jetzt dann Karten aus spielkartenarray zufällig positionieren 
+            leeren();
             rückseitenEinblenden();
             position(spielkarten);
             //jetzt noch Zeit messen --> Anfangszeit 
@@ -103,6 +104,12 @@ var Endabgabe;
         }
         let buttonPlay = document.getElementById("spielen");
         buttonPlay.addEventListener("click", erstellen);
+        function leeren() {
+            for (let i = 0; i < 20; i++) {
+                let zelle = document.getElementById(i + 1 + "");
+                zelle.innerHTML = "";
+            }
+        }
         function rückseitenEinblenden() {
             for (let i = 1; i < 21; i++) {
                 let rückseite = document.getElementById(i + "");

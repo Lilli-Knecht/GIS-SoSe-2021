@@ -129,6 +129,7 @@ namespace Endabgabe {
 
             //jetzt dann Karten aus spielkartenarray zufällig positionieren 
             
+            leeren();
             rückseitenEinblenden();
             position(spielkarten);
 
@@ -146,6 +147,15 @@ namespace Endabgabe {
         let buttonPlay: HTMLButtonElement = <HTMLButtonElement> document.getElementById("spielen"); 
         buttonPlay.addEventListener("click", erstellen);
 
+
+        function leeren(): void {
+            for (let i: number = 0; i < 20; i++) { 
+                let zelle: HTMLTableDataCellElement = <HTMLTableDataCellElement> document.getElementById(i + 1 + ""); 
+
+                zelle.innerHTML = "";
+
+            }
+        }
 
         function rückseitenEinblenden(): void {
             for (let i: number = 1; i < 21; i++) {
